@@ -55,5 +55,17 @@ namespace TodoIt.Tests
             Assert.Contains(firstName, result);
             Assert.Contains(lastName, result);
         }
+	[Fact]
+	public void IdCounterWorks2()
+	{
+	    //Act
+	    int before = Person.Counter;
+	    new Person( "Kent", "Svensson");//create person to make counter count up.
+
+	    //Assert
+	    Assert.NotEqual(before, Person.Counter);
+	    Assert.True(before < Person.Counter);
+	}
+
     }
 }
