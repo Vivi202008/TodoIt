@@ -5,16 +5,15 @@ namespace TodoIt.Model
 {
     public class Todo
     {
-
 	static int idCount = 0;
 	public static int Counter { get { return idCount; } }
 	private readonly int todoId;
+	public int TodoId { get { return todoId; } }
 
 	private string description;
 	private bool done;
 	private static Person assignee;
 
-	public int TodoId { get { return todoId; } }
 
 	public Person Assignee
 	{
@@ -33,7 +32,6 @@ namespace TodoIt.Model
 		{
 		    throw new ArgumentException("Empty or only whitespace is not allowed.");
 		}
-
 		description = value;
 	    }
 	}
