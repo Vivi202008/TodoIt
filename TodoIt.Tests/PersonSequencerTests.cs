@@ -7,7 +7,7 @@ namespace TodoIt.Tests
     public class PersonSequencerTests
     {
 	//
-	// kontrollera att id från sekvensklassen börjar på 1
+	// kontrollera att id från PersonSequencer när den startar alltid börjar på 1
 	//
 	[Fact]
 	public void IdCounterWorks1()
@@ -34,9 +34,14 @@ namespace TodoIt.Tests
 	    //Act
 	    int firstId  = PersonSequencer.nextPersonId();
 	    int secondId = PersonSequencer.nextPersonId();
+	    int thirdId = PersonSequencer.nextPersonId();
 
 	    //Assert
+	    Assert.True(firstId != secondId);
+	    Assert.True(firstId != thirdId);
+	    Assert.True(secondId != thirdId);
 	    Assert.True(firstId < secondId);
+	    Assert.True(secondId < thirdId);
 	}
     }
 }
