@@ -11,9 +11,10 @@ namespace TodoIt.Model
 	public static int Counter { get { return idCounter; } }
 
 	private readonly int personId;
+	public int PersonId { get { return personId; } }
+
 	string firstName;
 	string lastName;//default value stats with is null.
-
 	public string FirstName
 	{
 	    get { return firstName; }
@@ -39,8 +40,7 @@ namespace TodoIt.Model
 		lastName = value;
 	    }
 	}
-	// public string FullName { get { return firstName + ' ' + lastName; } }
-	public string FullName   { get { return $"{firstName} ${lastName}"; }}
+	public string FullName { get { return $"{firstName} ${lastName}"; } }
 
 	public Person(string firstName, string lastName)
 	{
@@ -51,7 +51,7 @@ namespace TodoIt.Model
 
 	 public string Details()
 	{
-	    return $"Name: {FullName}\npersonId: {personId}";
+	    return $"personId: {personId}\nName: {FullName}";
 	}
     }
 }
