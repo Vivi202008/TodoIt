@@ -1,6 +1,5 @@
 using System;
 using Xunit;
-using TodoIt.Model;
 using TodoIt.Data;
 
 namespace TodoIt.Tests
@@ -8,18 +7,41 @@ namespace TodoIt.Tests
     public class TodoSequencerTests
     {
 	//
-	// kontrollera att TodoSequencer när den startar alltid börjar på 1
+	// kontrollera att id från sekvensklassen börjar på 1
 	//
 	[Fact]
-	public void TodoSequencerWorks()
+	public void IdCounterWorks1()
 	{
 	    //Arrange
+	    TodoSequencer.reset();
 
 	    //Act
+	    int firstId = TodoSequencer.nextTodoID();
 
 	    //Assert
-	    // Assert.True(before < result);
+	    Assert.True( firstId == 1);
 	}
 
+	//
+	// kontrollera att id från sekvensklassen ökar
+	//
+	[Fact]
+	public void IdCounterWorks2()
+	{
+	    //Arrange
+	    TodoSequencer.reset();
+
+	    //Act
+	    int firstId  = TodoSequencer.nextTodoID();
+	    int secondId = TodoSequencer.nextTodoID();
+	    int thirdId = TodoSequencer.nextPersonId();
+
+	    //Assert
+	    Assert.True(firstId != secondId);
+	    Assert.True(firstId != thirdId);
+	    Assert.True(secondId != thirdId);
+	    Assert.True(firstId < secondId);
+	    Assert.True(secondId < thirdId);
+	}
     }
 }

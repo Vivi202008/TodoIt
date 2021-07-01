@@ -7,12 +7,10 @@ namespace TodoIt.Tests
     public class PersonSequencerTests
     {
 	//
-	// kontrollera att PersonSequencer när den startar alltid börjar på 1
-	//
-	// Todo klassens assignee är like med 0 när assignee ännu inte är tilldelad
+	// kontrollera att id från sekvensklassen börjar på 1
 	//
 	[Fact]
-	public void PersonSequencerWorks1()
+	public void IdCounterWorks1()
 	{
 	    //Arrange
 	    PersonSequencer.reset();
@@ -21,20 +19,20 @@ namespace TodoIt.Tests
 	    int firstId = PersonSequencer.nextPersonId();
 
 	    //Assert
-	    Assert.True(firstId == 1);
+	    Assert.True( firstId == 1);
 	}
 
 	//
-	// kontrollera att PersonSequencer.nextPersonId kontinuerligt ökar
+	// kontrollera att id från sekvensklassen ökar
 	//
 	[Fact]
-	public void PersonSequencerWorks2()
+	public void IdCounterWorks2()
 	{
 	    //Arrange
 	    PersonSequencer.reset();
 
 	    //Act
-	    int firstId = PersonSequencer.nextPersonId();
+	    int firstId  = PersonSequencer.nextPersonId();
 	    int secondId = PersonSequencer.nextPersonId();
 	    int thirdId = PersonSequencer.nextPersonId();
 
