@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 namespace TodoIt.Model
 {
     public class Todo
