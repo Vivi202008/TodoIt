@@ -56,6 +56,13 @@ namespace TodoIt.Model
 	    Assignee = nominatedAssignee;
 	}
 
+	public Todo(int id, string description)
+	{
+	    todoId = id;
+	    Description = description;
+	    Done = false;
+	}
+
 	public string Details()
 	{
 	    return $"todoId: {todoId}\nDescription: {description}\nDone?:{done}\nAssignee:{assignee}";
