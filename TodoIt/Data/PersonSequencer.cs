@@ -10,15 +10,13 @@ namespace TodoIt.Data
 
         public static int NextPersonId()
         {
-            int nextPersonId;
-            nextPersonId = +personId;
-            return nextPersonId;
+            return ++personId;
         }
 
-        public static int Reset()
+        public static void Reset()
         {
             personId = 0;
-            return personId;
+
         }
 
     }
