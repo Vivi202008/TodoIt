@@ -9,8 +9,6 @@ namespace TodoIt.Tests
 	//
 	// kontrollera att PersonSequencer när den startar alltid börjar på 1
 	//
-	// Todo klassens assignee är like med 0 när assignee ännu inte är tilldelad
-	//
 	[Fact]
 	public void IdCounterWorks1()
 	{
