@@ -7,7 +7,7 @@ namespace TodoIt.Tests
     public class TodoSequencerTests
     {
 	//
-	// kontrollera att TodoSequencer när den startar alltid börjar på 1
+	// kontrollera att id från TodoSequencer när den startar alltid börjar på 1
 	//
 	[Fact]
 	public void IdCounterWorks1()
@@ -23,7 +23,7 @@ namespace TodoIt.Tests
 	}
 
 	//
-	// kontrollera att id från sekvensklassen ökar
+	// kontrollera att id från TodoSequencer ökar
 	//
 	[Fact]
 	public void IdCounterWorks2()
