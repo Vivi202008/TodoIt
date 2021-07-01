@@ -7,9 +7,9 @@ namespace TodoIt.Model
     class Todo
     {
 	private readonly int todoId;
-	string description;
-	Person assignee;
-	bool done;
+	string  description;
+	int     assignee;
+	bool    done;
 
 	public Todo( int id, string description)
 	{
@@ -17,12 +17,12 @@ namespace TodoIt.Model
 	    {
 		throw new ArgumentException("Empty or only whitespace is not allowed.");
 	    }
-	    todiId = id;
+	    todoId = id;
 	    this.description = description;
 	}
 
 	public string Description {
-	    get { return description }
+	    get { return description; }
 	    set
 	    {
 		if (string.IsNullOrEmpty(value))
@@ -33,8 +33,8 @@ namespace TodoIt.Model
 	    }
 	}
 
-	public Person Assignee {
-	    get { return assignee }
+	public int Assignee {
+	    get { return assignee; }
 	    set
 	    {
 		this.assignee = value;
