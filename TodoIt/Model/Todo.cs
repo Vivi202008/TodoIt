@@ -6,9 +6,12 @@ namespace TodoIt.Model
 {
     class Todo
     {
+	private static idCount = 0;
+	public static int Counter{ get { return idCound; }}
+
 	private readonly int todoId;
-	string  description;
-	int     assignee;
+	string               description;
+	int                 assignee;
 	bool    done;
 
 	public Todo( int id, string description)

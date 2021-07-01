@@ -2,7 +2,7 @@ namespace TodoIt.Data
 {
     public class PersonSequencer
     {
-	private static int personId;
+	private static int personId=0;
 
 	public static int nextPersonId()
 	{
