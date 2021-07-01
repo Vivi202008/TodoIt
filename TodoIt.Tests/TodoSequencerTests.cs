@@ -16,9 +16,10 @@ namespace TodoIt.Tests
 	    TodoSequencer.reset();
 
 	    //Act
+	    int firstId  = TodoSequencer.nextTodoID();
 
 	    //Assert
-	    Assert.True(TodoSequencer.nextTodoID() == 1);
+	    Assert.True( firstId == 1);
 	}
 
 	//
