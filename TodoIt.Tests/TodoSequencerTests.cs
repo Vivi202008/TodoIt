@@ -34,9 +34,14 @@ namespace TodoIt.Tests
 	    //Act
 	    int firstId  = TodoSequencer.nextTodoID();
 	    int secondId = TodoSequencer.nextTodoID();
+	    int thirdId = TodoSequencer.nextPersonId();
 
 	    //Assert
+	    Assert.True(firstId != secondId);
+	    Assert.True(firstId != thirdId);
+	    Assert.True(secondId != thirdId);
 	    Assert.True(firstId < secondId);
+	    Assert.True(secondId < thirdId);
 	}
     }
 }
