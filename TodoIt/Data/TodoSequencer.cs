@@ -6,7 +6,7 @@ namespace TodoIt.Data
 {
     public class TodoSequencer
     {
-	private static int todoId;
+	private static int todoId=0;
 
 	public static int nextTodoID()
 	{
