@@ -51,7 +51,7 @@ namespace TodoIt.Model
 
 	 public string Details()
 	{
-	    return $"Name: {FullName}\npersonId: {personId}";
+	    return $"personId: {personId}\nName: {FullName}";
 	}
     }
 }
