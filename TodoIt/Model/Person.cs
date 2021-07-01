@@ -51,6 +51,5 @@ namespace TodoIt.Model
 	{
 	    return $"personId: {personId}\nName: {FullName}";
 	}
->>>>>>> origin/Wei2
     }
 }
