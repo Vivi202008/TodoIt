@@ -40,7 +40,7 @@ namespace TodoIt.Model
 		lastName = value;
 	    }
 	}
-	public string FullName { get { return firstName + ' ' + lastName; } }
+	public string FullName { get { return $"{firstName} ${lastName}"; } }
 
 	public Person(string firstName, string lastName)
 	{
