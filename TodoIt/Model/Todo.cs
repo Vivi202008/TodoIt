@@ -9,6 +9,7 @@ namespace TodoIt.Model
         static int idCount = 0;
         public static int Counter { get { return idCount; } }
         private readonly int todoId;
+        public int TodoId { get { return todoId; } }
 
         private string description;
         private bool done;

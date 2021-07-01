@@ -10,7 +10,9 @@ namespace TodoIt.Model
         static int idCounter = 0;
         public static int Counter { get { return idCounter; } }
 
-        public readonly int personId;
+        private readonly int personId;
+        public int PersonId { get { return personId; } }
+
         string firstName;
         string lastName;//default value stats with is null.
         public string FirstName

@@ -44,7 +44,7 @@ namespace TodoIt.Tests
             Todo todo2 = new Todo(description2, assignee2);
 
             //Assert
-            Assert.NotEqual(todo1.todoId, todo2.todoId);
+            Assert.NotEqual(todo1.TodoId, todo2.TodoId);
         }
 
         [Fact]
