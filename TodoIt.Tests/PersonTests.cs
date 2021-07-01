@@ -6,6 +6,12 @@ namespace TodoIt.Tests
 {
     public class PersonTests
     {
+	//
+	// kontrollera att efter instantiering av en Person
+	// att den statiska idCounter i klassen är förändrad
+	// annars kan man kanske få två instanser av Person
+	// med samma Id
+	//
 	[Fact]
 	public void IdCounterWorks()
 	{
@@ -34,6 +40,10 @@ namespace TodoIt.Tests
 	    Assert.True(before < Person.Counter);
 	}
 
+	//
+	// kontrollera att personId i instanser av Person är unik
+	// dvs att ingen annan instans av Person har samma personId
+	//
 	[Fact]
 	public void PersonIdWorks()
 	{
@@ -51,6 +61,9 @@ namespace TodoIt.Tests
 	    Assert.NotEqual(person1.personId, person2.personId);
 	}
 
+	//
+	// garanterar att Details inkluderar FullName dvs förnamn efternamn
+	//
 	[Fact]
 	public void DetailsContainsCorrectInfo()
 	{
