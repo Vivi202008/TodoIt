@@ -1,30 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace TodoIt.Model
 {
     class Todo
     {
-	private static idCount = 0;
-	public static int Counter{ get { return idCound; }}
 
+	static int idCount = 0;
+	public static int Counter { get { return idCount; } }
 	private readonly int todoId;
-	string               description;
-	int                 assignee;
-	bool    done;
 
-	public Todo( int id, string description)
+	private string description;
+	private bool done;
+	// private static string firstName;
+	// private static string lastName;
+	// private static Person assignee = new Person(firstName, lastName);
+	private static Person assignee;
+
+	public Person Assignee
 	{
-	    if (string.IsNullOrEmpty(description))
+	    get { return assignee; }
+	    set
 	    {
-		throw new ArgumentException("Empty or only whitespace is not allowed.");
+		assignee = value;
 	    }
-	    todoId = id;
-	    this.description = description;
 	}
-
-	public string Description {
+	public string Description
+	{
 	    get { return description; }
 	    set
 	    {
@@ -32,16 +34,38 @@ namespace TodoIt.Model
 		{
 		    throw new ArgumentException("Empty or only whitespace is not allowed.");
 		}
-		this.description = value;
+
+		description = value;
 	    }
 	}
 
-	public int Assignee {
-	    get { return assignee; }
+	public bool Done
+	{
+	    get { return done; }
 	    set
 	    {
-		this.assignee = value;
+		done = value;
 	    }
+	}
+
+	public Todo(string description, Person nominatedAssignee)
+	{
+	    todoId = ++idCount;
+	    Description = description;
+	    Done = false;
+	    Assignee = nominatedAssignee;
+	}
+
+	public Todo(int id, string description)
+	{
+	    todoId = id;
+	    Description = description;
+	    Done = false;
+	}
+
+	public string Details()
+	{
+	    return $"todoId: {todoId}\nDescription: {description}\nDone?:{done}\nAssignee:{assignee}";
 	}
     }
 }
