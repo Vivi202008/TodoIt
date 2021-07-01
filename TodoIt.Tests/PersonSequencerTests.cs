@@ -16,7 +16,7 @@ namespace TodoIt.Tests
 	    PersonSequencer.reset();
 
 	    //Act
-	    int firstId  = PersonSequencer.nextPersonId();
+	    int firstId = PersonSequencer.nextPersonId();
 
 	    //Assert
 	    Assert.True( firstId == 1);

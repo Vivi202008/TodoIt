@@ -13,7 +13,7 @@ namespace TodoIt.Tests
 	// med samma Id
 	//
 	[Fact]
-	public void IdCounterWorks1()
+	public void IdCounterWorks()
 	{
 	    //Arrange
 	    string firstName = "Kent";
