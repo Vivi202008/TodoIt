@@ -6,67 +6,67 @@ namespace TodoIt.Tests
 {
     public class PersonTests
     {
-	//
-	// kontrollera att efter instantiering av en Person
-	// att den statiska idCounter i klassen är förändrad
-	// annars kan man kanske få två instanser av Person
-	// med samma Id
-	//
-	[Fact]
-	public void IdCounterWorks()
-	{
-	    //Arrange
-	    string firstName = "Kent";
-	    string lastName = "Svensson";
+        //
+        // kontrollera att efter instantiering av en Person
+        // att den statiska idCounter i klassen är förändrad
+        // annars kan man kanske få två instanser av Person
+        // med samma Id
+        //
+        [Fact]
+        public void IdCounterWorks()
+        {
+            //Arrange
+            string firstName = "Kent";
+            string lastName = "Svensson";
 
-	    //Act
-	    int before = Person.Counter;
-	    new Person(firstName, lastName);//create person to make counter count up.
-	    int result = Person.Counter;
+            //Act
+            int before = Person.Counter;
+            new Person(firstName, lastName);//create person to make counter count up.
+            int result = Person.Counter;
 
-	    //Assert
-	    Assert.True(before < result);
-	}
+            //Assert
+            Assert.True(before < result);
+        }
 
-	//
-	// kontrollera att personId i instanser av Person är unik
-	// dvs att ingen annan instans av Person har samma personId
-	//
-	[Fact]
-	public void PersonIdWorks()
-	{
-	    //Arrange
-	    string firstName = "Kent";
-	    string lastName = "Svensson";
-	    string firstName2 = "Test";
-	    string lastName2 = "Testsson";
+        //
+        // kontrollera att personId i instanser av Person är unik
+        // dvs att ingen annan instans av Person har samma personId
+        //
+        [Fact]
+        public void PersonIdWorks()
+        {
+            //Arrange
+            string firstName = "Kent";
+            string lastName = "Svensson";
+            string firstName2 = "Test";
+            string lastName2 = "Testsson";
 
-	    //Act
-	    Person person1 = new Person(firstName, lastName);
-	    Person person2 = new Person(firstName2, lastName2);
+            //Act
+            Person person1 = new Person(firstName, lastName);
+            Person person2 = new Person(firstName2, lastName2);
 
-	    //Assert
-	    Assert.NotEqual(person1.PersonId, person2.PersonId);
-	}
+            //Assert
+            Assert.NotEqual(person1.PersonId, person2.PersonId);
+        }
 
-	//
-	// garanterar att Details inkluderar FullName dvs förnamn efternamn
-	//
-	[Fact]
-	public void DetailsContainsCorrectInfo()
-	{
-	    //Arrange
-	    string firstName = "Kent";
-	    string lastName = "Svensson";
+        //
+        // garanterar att Details inkluderar FullName dvs förnamn efternamn
+        //
+        [Fact]
+        public void DetailsContainsCorrectInfo()
+        {
+            //Arrange
+            string firstName = "Kent";
+            string lastName = "Svensson";
 
-	    Person testPerson = new Person(firstName, lastName);
+            Person testPerson = new Person(firstName, lastName);
 
-	    //Act
-	    string result = testPerson.Details();
+            //Act
+            string result = testPerson.Details();
 
-	    //Assert
-	    Assert.Contains(firstName, result);
-	    Assert.Contains(lastName, result);
-	}
+            //Assert
+            Assert.Contains(firstName, result);
+            Assert.Contains(lastName, result);
+        }
     }
 }
