@@ -8,5 +8,6 @@ namespace TodoIt.Model
     {
         private readonly int todoId;
         string description;
+        bool done;
     }
 }
