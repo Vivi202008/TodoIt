@@ -28,18 +28,6 @@ namespace TodoIt.Tests
 	    Assert.True(before < result);
 	}
 
-	[Fact]
-	public void IdCounterWorks2()
-	{
-	    //Act
-	    int before = Person.Counter;
-	    new Person( "Kent", "Svensson");//create person to make counter count up.
-
-	    //Assert
-	    Assert.NotEqual(before, Person.Counter);
-	    Assert.True(before < Person.Counter);
-	}
-
 	//
 	// kontrollera att personId i instanser av Person är unik
 	// dvs att ingen annan instans av Person har samma personId
@@ -58,7 +46,7 @@ namespace TodoIt.Tests
 	    Person person2 = new Person(firstName2, lastName2);
 
 	    //Assert
-	    Assert.NotEqual(person1.personId, person2.personId);
+	    Assert.NotEqual(person1.PersonId, person2.PersonId);
 	}
 
 	//

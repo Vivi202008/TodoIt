@@ -1,6 +1,5 @@
 using System;
 using Xunit;
-using TodoIt.Model;
 using TodoIt.Data;
 
 namespace TodoIt.Tests
