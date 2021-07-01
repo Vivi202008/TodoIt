@@ -6,5 +6,6 @@ namespace TodoIt.Model
 {
     class Todo
     {
+        private readonly int todoId;
     }
 }
