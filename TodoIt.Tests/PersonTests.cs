@@ -58,7 +58,7 @@ namespace TodoIt.Tests
 	    Person person2 = new Person(firstName2, lastName2);
 
 	    //Assert
-	    Assert.NotEqual(person1.personId, person2.personId);
+	    Assert.NotEqual(person1.PersonId, person2.PersonId);
 	}
 
 	//
