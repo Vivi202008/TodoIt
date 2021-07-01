@@ -11,15 +11,12 @@ namespace TodoIt.Data
 
         public static int NextTodoId()
         {
-            int nextTodoId;
-            nextTodoId = +todoId;
-            return nextTodoId;
+            return ++todoId;
         }
 
-        public static int Reset()
+        public static void Reset()
         {
             todoId = 0;
-            return todoId;
         }
 
     }
