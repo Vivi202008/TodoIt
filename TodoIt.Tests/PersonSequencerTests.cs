@@ -7,7 +7,7 @@ namespace TodoIt.Tests
     public class PersonSequencerTests
     {
 	//
-	// kontrollera att PersonSequencer när den startar alltid börjar på 1
+	// kontrollera att id från PersonSequencer när den startar alltid börjar på 1
 	//
 	[Fact]
 	public void IdCounterWorks1()
