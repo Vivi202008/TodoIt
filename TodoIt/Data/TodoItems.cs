@@ -28,28 +28,50 @@ namespace TodoIt.Data
 
         public Todo[] FindByAssignee(int personId)
         {
-            Todo[] todoDone = new Todo[0];
+            Todo[] todoPersonId = new Todo[0];
             int count = 0;
             for (int i = 0; i < todoAll.Length; i++)
             {
-                if (todoAll[i].PersonId == personId)
+                if (todoAll[i].Assignee.PersonId == personId)
                 {
-                    todoDone[count] = todoAll[i];
+                    todoPersonId[count] = todoAll[i];
                     ++count;
                 }
             }
 
-            return todoDone;
+            return todoPersonId;
         }
 
         public Todo[] FindByAssignee(Person assignee)
         {
+            Todo[] todoAssignee = new Todo[0];
+            int count = 0;
+            for (int i = 0; i < todoAll.Length; i++)
+            {
+                if (todoAll[i].Assignee == assignee)
+                {
+                    todoAssignee[count] = todoAll[i];
+                    ++count;
+                }
+            }
 
+            return todoAssignee;
         }
 
         public Todo[] FindUnassignedTodoItems()
         {
 
+            Todo[] todoUnAssignee = new Todo[0];
+            int count = 0;
+            for (int i = 0; i < todoAll.Length; i++)
+            {
+                if (todoAll[i].Assignee == null)
+                {
+                    todoUnAssignee[count] = todoAll[i];
+                    ++count;
+                }
+            }
+            return todoUnAssignee;
         }
     }
 }
