@@ -74,19 +74,31 @@ namespace TodoIt.Data
             return todoUnAssignee;
         }
 
-        public Todo[] TodoAfterRemove(int todoId)
+        public bool TodoAfterRemove(int todoId)
         {
-            Todo[] todoAfterRemove = new Todo[0];
+            bool todoToBeRemovedFound = false;
+            Todo[] todoAllAfterRemove = new Todo[0];
+            int indxTodoAll = 0;
+            int indxTodoAllAfterRemove = 0;
 
-            for (int i = 0; i < todoAll.Length - 1; i++)
+            while (indxTodoAll < todoAll.Length)
             {
-                todoAfterRemove[i] = todoAll[i];
-                if (todoAll[i].TodoId == todoId)
+                if (todoAll[indxTodoAll].TodoId == todoId) // den här Todo ska inte med men mata inte fram indxTodoAllAfterRemove
                 {
-                    todoAfterRemove[i] = todoAll[i + 1];
+                    indxTodoAll++;
+                    todoToBeRemovedFound = true;
+                }
+                else
+                {
+                    Array.Resize(ref todoAllAfterRemove, todoAllAfterRemove.Length + 1);
+                    todoAllAfterRemove[indxTodoAllAfterRemove] = todoAll[indxTodoAll];
+                    indxTodoAll++;
+                    indxTodoAllAfterRemove++;
                 }
             }
-            return todoAfterRemove;
+
+            todoAll = todoAllAfterRemove;
+            return todoToBeRemovedFound;
         }
     }
 }

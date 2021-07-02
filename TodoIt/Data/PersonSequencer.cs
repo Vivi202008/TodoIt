@@ -6,7 +6,7 @@ namespace TodoIt.Data
 {
     public class PersonSequencer
     {
-        private static int personId = 1;
+        private static int personId = 0;
 
         public static int nextPersonId()
         {

@@ -49,19 +49,34 @@ namespace TodoIt.Data
             return addPerson;
         }
 
-        public Person[] PersonAfterRemove(int personId)
+        public bool PersonAfterRemove(int personId)
         {
-            Person[] personAfterRemove = new Person[0];
+            bool personToBeRemovedFound = false;
+            Person[] personArrayAfterRemove = new Person[0];
+            int indxPersonArray = 0;
+            int indxPersonArrayAfterRemove = 0;
 
-            for (int i = 0; i < personArray.Length - 1; i++)
+            while (indxPersonArray < personArray.Length)
             {
-                personAfterRemove[i] = personArray[i];
-                if (personArray[i].PersonId == personId)
+                if (personArray[indxPersonArray].PersonId == personId) // den här Person ska inte med men mata inte fram indxPersonArrayAfterRemove
                 {
-                    personAfterRemove[i] = personArray[i + 1];
+                    indxPersonArray++;
+                    personToBeRemovedFound = true;
+                    Console.WriteLine("PersionArray: " + indxPersonArray + "PersionArrayAfterRemove" + indxPersonArrayAfterRemove);
                 }
+                else
+                {
+                    Array.Resize(ref personArrayAfterRemove, personArrayAfterRemove.Length + 1);
+                    personArrayAfterRemove[indxPersonArrayAfterRemove] = personArray[indxPersonArray];
+                    indxPersonArray++;
+                    indxPersonArrayAfterRemove++;
+                    Console.WriteLine("PersionArray: " + indxPersonArray + "PersionArrayAfterRemove" + indxPersonArrayAfterRemove);
+                }
+
             }
-            return personAfterRemove;
+
+            personArray = personArrayAfterRemove;
+            return personToBeRemovedFound;
         }
 
         public void Clear()
