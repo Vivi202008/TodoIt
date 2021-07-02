@@ -49,6 +49,13 @@ namespace TodoIt.Model
             LastName = lastName;
         }
 
+        public Person(string firstName, string lastName, int id)
+        {
+            personId = id;
+            FirstName = firstName;
+            LastName = lastName;
+        }
+
         public string Details()
         {
             return $"personId: {personId}\nName: {FullName}";

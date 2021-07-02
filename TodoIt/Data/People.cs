@@ -25,7 +25,7 @@ namespace TodoIt.Data
         }
         public Person AddPerson(string firstName, string lastName)
         {
-            Person addPerson = new Person(firstName, lastName);
+            Person addPerson = new Person(firstName, lastName, PersonSequencer.nextPersonId());
             int sizeofPersonArray = Size(); // Get incrementing size of Array.
 
             Array.Resize(ref personArray, sizeofPersonArray + 1); // Increase the size of Array when add new person object
