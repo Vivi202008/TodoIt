@@ -16,7 +16,7 @@ namespace TodoIt.Tests
             TodoSequencer.reset();
 
             //Act
-            int firstId = TodoSequencer.nextTodoID();
+            int firstId = TodoSequencer.nextTodoId();
 
             //Assert
             Assert.True(firstId == 1);
@@ -32,9 +32,9 @@ namespace TodoIt.Tests
             TodoSequencer.reset();
 
             //Act
-            int firstId = TodoSequencer.nextTodoID();
-            int secondId = TodoSequencer.nextTodoID();
-            int thirdId = TodoSequencer.nextTodoID();
+            int firstId = TodoSequencer.nextTodoId();
+            int secondId = TodoSequencer.nextTodoId();
+            int thirdId = TodoSequencer.nextTodoId();
 
             //Assert
             Assert.True(firstId != secondId);
