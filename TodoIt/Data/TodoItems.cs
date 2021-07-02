@@ -8,7 +8,47 @@ namespace TodoIt.Data
 {
     class TodoItems
     {
-        static Todo[] todoAll = new Todo[0];
+        private static Todo[] todoAll = new Todo[0];
+
+        public int Size()
+        {
+            return todoAll.Length;
+        }
+
+        public Todo[] FindAll()
+        {
+            return todoAll;
+        }
+
+        public Todo FindById(int todoId)
+        {
+
+            bool found = false;
+            int i = 0;  // iterering igenom todoAll
+            while (!found && i < todoAll.Length)
+            {
+                if (todoAll[i].TodoId == todoId)
+                {
+                    found = true;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+            return todoAll[i];
+
+        }
+        public Todo AddTodo(int id, string description)
+        {
+            Todo addTodo = new Todo(id, description);   //use id or TodoSequencer.nextTodoId()?
+            int sizeofTodoAll = Size(); // Get incrementing size of Array.
+
+            Array.Resize(ref todoAll, sizeofTodoAll + 1); // Increase the size of Array when add new todo object
+
+            todoAll[sizeofTodoAll] = addTodo; // Adding todo object to Array.
+            return addTodo;
+        }
 
         public Todo[] FindByDoneStatus(bool doneStatus)
         {

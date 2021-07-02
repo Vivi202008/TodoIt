@@ -8,7 +8,7 @@ namespace TodoIt.Data
     {
         private static int todoId = 0;
 
-        public static int nextTodoID()
+        public static int nextTodoId()
         {
             return ++todoId;
         }
