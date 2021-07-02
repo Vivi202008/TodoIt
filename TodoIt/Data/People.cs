@@ -8,7 +8,7 @@ namespace TodoIt.Data
     public class People
     {
         private static Person[] personArray = new Person[0];
-        int personId = PersonSequencer.nextPersonId(); // Assign uniq Id to person.
+
         public int Size()
         {
             return personArray.Length;
@@ -21,7 +21,22 @@ namespace TodoIt.Data
 
         public Person FindById(int personId)
         {
-            return personArray[personId];
+
+            bool found = false;
+            int i = 0;  // iterering igenom personArray
+            while (!found && i < personArray.Length)
+            {
+                if (personArray[i].PersonId == personId)
+                {
+                    found = true;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+            return personArray[i];
+
         }
         public Person AddPerson(string firstName, string lastName)
         {

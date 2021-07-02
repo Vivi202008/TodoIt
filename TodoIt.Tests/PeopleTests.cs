@@ -26,7 +26,6 @@ namespace TodoIt.Tests
             string expectedLastName1 = "Jonasson";
 
             // Act
-            PersonSequencer.reset();
             People actualPeople = new People();
             Person actualPerson = actualPeople.AddPerson(expectedFirstName, expectedLastName);
             Person actualPerson1 = actualPeople.AddPerson(expectedFirstName1, expectedLastName1);
@@ -39,9 +38,14 @@ namespace TodoIt.Tests
             Assert.Equal(expectedLastName1, actualPerson1.LastName);
             Assert.Contains(actualPerson, testPersonArray);
             Assert.Contains(actualPerson1, testPersonArray);
+
             Assert.NotEqual(actualPerson.PersonId, actualPerson1.PersonId);
-            Assert.True(actualPerson.PersonId == 1);
-            Assert.True(actualPerson1.PersonId == 2);
+            Assert.True(actualPerson.PersonId == 2);
+            Assert.True(actualPerson1.PersonId == 3);
+
+            Assert.Contains(actualPeople.FindById(0).FirstName, "Erik");
+            Assert.Contains(actualPeople.FindById(1).FirstName, "Jonas");
+
         }
 
 
