@@ -28,13 +28,11 @@ namespace TodoIt.Data
             Person addPerson = new Person(firstName, lastName);
             int sizeofPersonArray = Size(); // Get incrementing size of Array.
 
-            Array.Resize(ref personArray, sizeofPersonArray); // Increase the size of Array when add new person object
+            Array.Resize(ref personArray, sizeofPersonArray + 1); // Increase the size of Array when add new person object
 
-            for (int i = 0; i < personArray.Length; i++) // Adding person object to Array.
-                personArray[i] = addPerson;
+            personArray[sizeofPersonArray] = addPerson; // Adding person object to Array.
             return addPerson;
         }
-
 
         public void Clear()
         {
