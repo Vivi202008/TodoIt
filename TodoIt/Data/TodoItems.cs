@@ -73,5 +73,20 @@ namespace TodoIt.Data
             }
             return todoUnAssignee;
         }
+
+        public Todo[] TodoAfterRemove(int todoId)
+        {
+            Todo[] todoAfterRemove = new Todo[0];
+
+            for (int i = 0; i < todoAll.Length - 1; i++)
+            {
+                todoAfterRemove[i] = todoAll[i];
+                if (todoAll[i].TodoId == todoId)
+                {
+                    todoAfterRemove[i] = todoAll[i + 1];
+                }
+            }
+            return todoAfterRemove;
+        }
     }
 }

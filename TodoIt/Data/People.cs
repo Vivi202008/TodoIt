@@ -49,6 +49,21 @@ namespace TodoIt.Data
             return addPerson;
         }
 
+        public Person[] PersonAfterRemove(int personId)
+        {
+            Person[] personAfterRemove = new Person[0];
+
+            for (int i = 0; i < personArray.Length - 1; i++)
+            {
+                personAfterRemove[i] = personArray[i];
+                if (personArray[i].PersonId == personId)
+                {
+                    personAfterRemove[i] = personArray[i + 1];
+                }
+            }
+            return personAfterRemove;
+        }
+
         public void Clear()
         {
             Array.Clear(personArray, 0, personArray.Length);
