@@ -6,7 +6,7 @@ using TodoIt.Model;
 
 namespace TodoIt.Data
 {
-    class TodoItems
+    public class TodoItems
     {
         private static Todo[] todoAll = new Todo[0];
 
@@ -39,9 +39,10 @@ namespace TodoIt.Data
             return todoAll[i];
 
         }
-        public Todo AddTodo(int id, string description)
+
+        public Todo AddTodo(string description, Person nominatedAssignee)
         {
-            Todo addTodo = new Todo(id, description);   //use id or TodoSequencer.nextTodoId()?
+            Todo addTodo = new Todo(TodoSequencer.nextTodoId(), description, nominatedAssignee);
             int sizeofTodoAll = Size(); // Get incrementing size of Array.
 
             Array.Resize(ref todoAll, sizeofTodoAll + 1); // Increase the size of Array when add new todo object
@@ -53,29 +54,30 @@ namespace TodoIt.Data
         public Todo[] FindByDoneStatus(bool doneStatus)
         {
             Todo[] todoDone = new Todo[0];
-            int count = 0;
             for (int i = 0; i < todoAll.Length; i++)
             {
                 if (todoAll[i].Done == doneStatus)
                 {
-                    todoDone[count] = todoAll[i];
-                    ++count;
+                    int sizeofTodoDone = todoDone.Length; // Get incrementing size of Array.
+                    Array.Resize(ref todoDone, sizeofTodoDone + 1); // Increase the size of Array when add new todo object
+
+                    todoDone[sizeofTodoDone] = todoAll[i];
                 }
             }
-
             return todoDone;
         }
 
         public Todo[] FindByAssignee(int personId)
         {
             Todo[] todoPersonId = new Todo[0];
-            int count = 0;
             for (int i = 0; i < todoAll.Length; i++)
             {
                 if (todoAll[i].Assignee.PersonId == personId)
                 {
-                    todoPersonId[count] = todoAll[i];
-                    ++count;
+                    int sizeofTodoPersonId = todoPersonId.Length; // Get incrementing size of Array.
+                    Array.Resize(ref todoPersonId, sizeofTodoPersonId + 1); // Increase the size of Array when add new todo object
+
+                    todoPersonId[sizeofTodoPersonId] = todoAll[i];
                 }
             }
 
@@ -85,13 +87,16 @@ namespace TodoIt.Data
         public Todo[] FindByAssignee(Person assignee)
         {
             Todo[] todoAssignee = new Todo[0];
-            int count = 0;
+
             for (int i = 0; i < todoAll.Length; i++)
             {
                 if (todoAll[i].Assignee == assignee)
                 {
-                    todoAssignee[count] = todoAll[i];
-                    ++count;
+                    int sizeoftodoAssignee = todoAssignee.Length; // Get incrementing size of Array
+                    Array.Resize(ref todoAssignee, sizeoftodoAssignee + 1); // Increase the size of Array when add new todo object
+
+                    todoAssignee[sizeoftodoAssignee] = todoAll[i];
+
                 }
             }
 
@@ -102,13 +107,16 @@ namespace TodoIt.Data
         {
 
             Todo[] todoUnAssignee = new Todo[0];
-            int count = 0;
+
             for (int i = 0; i < todoAll.Length; i++)
             {
                 if (todoAll[i].Assignee == null)
                 {
-                    todoUnAssignee[count] = todoAll[i];
-                    ++count;
+                    int sizeofTodoUnAssignee = Size(); // Get incrementing size of Array.
+                    Array.Resize(ref todoAll, sizeofTodoUnAssignee + 1); // Increase the size of Array when add new todo object
+
+                    todoUnAssignee[sizeofTodoUnAssignee] = todoAll[i];
+
                 }
             }
             return todoUnAssignee;
