@@ -8,145 +8,155 @@ namespace TodoIt.Data
 {
     public class TodoItems
     {
-        private static Todo[] todoAll = new Todo[0];
+	private static Todo[] todoAll = new Todo[0];
 
-        public int Size()
-        {
-            return todoAll.Length;
-        }
+	public int Size()
+	{
+	    return todoAll.Length;
+	}
 
-        public Todo[] FindAll()
-        {
-            return todoAll;
-        }
+	public Todo[] FindAll()
+	{
+	    return todoAll;
+	}
 
-        public Todo FindById(int todoId)
-        {
+	public Todo FindById(int todoId)
+	{
+	    Todo theItem = null;
 
-            bool found = false;
-            int i = 0;  // iterering igenom todoAll
-            while (!found && i < todoAll.Length)
-            {
-                if (todoAll[i].TodoId == todoId)
-                {
-                    found = true;
-                }
-                else
-                {
-                    i++;
-                }
-            }
-            return todoAll[i];
+	    foreach (Todo item in todoAll)
+	    {
+		if (item.TodoId == todoId) // hittad
+		    theItem = item;
+	    }
 
-        }
+	    return theItem;
+	}
 
-        public Todo AddTodo(string description, Person nominatedAssignee)
-        {
-            Todo addTodo = new Todo(TodoSequencer.nextTodoId(), description, nominatedAssignee);
-            int sizeofTodoAll = Size(); // Get incrementing size of Array.
+	public Todo AddTodo(string description, Person nominatedAssignee)
+	{
+	    Todo addTodo = new Todo(TodoSequencer.nextTodoId(), description, nominatedAssignee);
+	    int sizeofTodoAll = Size(); // Get incrementing size of Array.
 
-            Array.Resize(ref todoAll, sizeofTodoAll + 1); // Increase the size of Array when add new todo object
+	    Array.Resize(ref todoAll, sizeofTodoAll + 1); // Increase the size of Array when add new todo object
+	    todoAll[sizeofTodoAll] = addTodo; // Adding todo object to Array.
 
-            todoAll[sizeofTodoAll] = addTodo; // Adding todo object to Array.
-            return addTodo;
-        }
+	    return addTodo;
+	}
 
-        public Todo[] FindByDoneStatus(bool doneStatus)
-        {
-            Todo[] todoDone = new Todo[0];
-            for (int i = 0; i < todoAll.Length; i++)
-            {
-                if (todoAll[i].Done == doneStatus)
-                {
-                    int sizeofTodoDone = todoDone.Length; // Get incrementing size of Array.
-                    Array.Resize(ref todoDone, sizeofTodoDone + 1); // Increase the size of Array when add new todo object
+	// <summary>
+	// vilka todo har en viss status dvs ej färdig/klar(inaktuell) ?
+	// </summary>
+	public Todo[] FindByDoneStatus(bool doneStatus)
+	{
+	    Todo[] todoDone = new Todo[0];
+	    int count = 0;
 
-                    todoDone[sizeofTodoDone] = todoAll[i];
-                }
-            }
-            return todoDone;
-        }
+	    // omskrivning till foreach ?
+	    for (int i = 0; i < Size(); i++)
+	    {
+		if (todoAll[i].Done == doneStatus)
+		{
+		    Array.Resize(ref todoDone, todoDone.Length + 1); // Increase the size of Array when add new todo object
+		    todoDone[count] = todoAll[i];
+		    ++count;
+		}
+	    }
 
-        public Todo[] FindByAssignee(int personId)
-        {
-            Todo[] todoPersonId = new Todo[0];
-            for (int i = 0; i < todoAll.Length; i++)
-            {
-                if (todoAll[i].Assignee.PersonId == personId)
-                {
-                    int sizeofTodoPersonId = todoPersonId.Length; // Get incrementing size of Array.
-                    Array.Resize(ref todoPersonId, sizeofTodoPersonId + 1); // Increase the size of Array when add new todo object
+	    return todoDone;
+	}
 
-                    todoPersonId[sizeofTodoPersonId] = todoAll[i];
-                }
-            }
+	// <summary>
+	// vilka todo har en viss ansvarig ?
+	// utgår från personId
+	// </summary>
+	public Todo[] FindByAssignee(int personId)
+	{
+	    Todo[] todoPersonId = new Todo[0];
+	    int count = 0;
 
-            return todoPersonId;
-        }
+	    for (int i = 0; i < Size(); i++)
+	    {
+		if (todoAll[i].Assignee.PersonId == personId)
+		{
+		    Array.Resize(ref todoPersonId, todoPersonId.Length + 1); // Increase the size of Array when add new todo object
+		    todoPersonId[count] = todoAll[i];
+		    ++count;
+		}
+	    }
 
-        public Todo[] FindByAssignee(Person assignee)
-        {
-            Todo[] todoAssignee = new Todo[0];
+	    return todoPersonId;
+	}
 
-            for (int i = 0; i < todoAll.Length; i++)
-            {
-                if (todoAll[i].Assignee == assignee)
-                {
-                    int sizeoftodoAssignee = todoAssignee.Length; // Get incrementing size of Array
-                    Array.Resize(ref todoAssignee, sizeoftodoAssignee + 1); // Increase the size of Array when add new todo object
+	// <summary>
+	// vilka todo har en viss ansvarig ?
+	// utgår från person-objekt
+	// </summary>
+	public Todo[] FindByAssignee(Person assignee)
+	{
+	    Todo[] todoAssignee = new Todo[0];
+	    int count = 0;
 
-                    todoAssignee[sizeoftodoAssignee] = todoAll[i];
+	    for (int i = 0; i < todoAll.Length; i++)
+	    {
+		if (todoAll[i].Assignee == assignee)
+		{
+		    Array.Resize(ref todoAssignee, todoAssignee.Length + 1); // Increase the size of Array when add new todo object
+		    todoAssignee[count] = todoAll[i];
+		    ++count;
+		}
+	    }
 
-                }
-            }
+	    return todoAssignee;
+	}
 
-            return todoAssignee;
-        }
+	// <summary>
+	// vilka todo har inte fått en ansvarig nominerad ?
+	// </summary>
+	public Todo[] FindUnassignedTodoItems()
+	{
+	    Todo[] todoUnAssigned = new Todo[0];
+	    int count = 0;
 
-        public Todo[] FindUnassignedTodoItems()
-        {
+	    for (int i = 0; i < todoAll.Length; i++)
+	    {
+		if (todoAll[i].Assignee == null)
+		{
+		    Array.Resize(ref todoUnAssigned, todoUnAssigned.Length + 1); // Increase the size of Array when add new todo object
+		    todoUnAssigned[count] = todoAll[i];
+		    ++count;
+		}
+	    }
 
-            Todo[] todoUnAssignee = new Todo[0];
+	    return todoUnAssigned;
+	}
 
-            for (int i = 0; i < todoAll.Length; i++)
-            {
-                if (todoAll[i].Assignee == null)
-                {
-                    int sizeofTodoUnAssignee = Size(); // Get incrementing size of Array.
-                    Array.Resize(ref todoAll, sizeofTodoUnAssignee + 1); // Increase the size of Array when add new todo object
+	public bool TodoAfterRemove(int todoId)
+	{
+	    bool todoToBeRemovedFound = false;
+	    Todo[] todoAllAfterRemove = new Todo[0];
+	    int indxTodoAll = 0;
+	    int indxTodoAllAfterRemove = 0;
 
-                    todoUnAssignee[sizeofTodoUnAssignee] = todoAll[i];
+	    while (indxTodoAll < todoAll.Length)
+	    {
+		if (todoAll[indxTodoAll].TodoId == todoId) // den här Todo ska inte med men mata inte fram indxTodoAllAfterRemove
+		{
+		    indxTodoAll++;
+		    todoToBeRemovedFound = true;
+		}
+		else
+		{
+		    Array.Resize(ref todoAllAfterRemove, todoAllAfterRemove.Length + 1);
+		    todoAllAfterRemove[indxTodoAllAfterRemove] = todoAll[indxTodoAll];
+		    indxTodoAll++;
+		    indxTodoAllAfterRemove++;
+		}
+	    }
 
-                }
-            }
-            return todoUnAssignee;
-        }
+	    todoAll = todoAllAfterRemove;
 
-        public bool TodoAfterRemove(int todoId)
-        {
-            bool todoToBeRemovedFound = false;
-            Todo[] todoAllAfterRemove = new Todo[0];
-            int indxTodoAll = 0;
-            int indxTodoAllAfterRemove = 0;
-
-            while (indxTodoAll < todoAll.Length)
-            {
-                if (todoAll[indxTodoAll].TodoId == todoId) // den här Todo ska inte med men mata inte fram indxTodoAllAfterRemove
-                {
-                    indxTodoAll++;
-                    todoToBeRemovedFound = true;
-                }
-                else
-                {
-                    Array.Resize(ref todoAllAfterRemove, todoAllAfterRemove.Length + 1);
-                    todoAllAfterRemove[indxTodoAllAfterRemove] = todoAll[indxTodoAll];
-                    indxTodoAll++;
-                    indxTodoAllAfterRemove++;
-                }
-            }
-
-            todoAll = todoAllAfterRemove;
-            return todoToBeRemovedFound;
-        }
+	    return todoToBeRemovedFound;
+	}
     }
 }
