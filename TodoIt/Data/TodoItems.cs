@@ -35,11 +35,20 @@ namespace TodoIt.Data
 
 	public Todo AddTodo(string description, Person nominatedAssignee)
 	{
-	    Todo addTodo = new Todo(TodoSequencer.nextTodoId(), description, nominatedAssignee);
-	    int sizeofTodoAll = Size(); // Get incrementing size of Array.
+	    int currentLength = todoAll.Length; // todoAlls nuvarande längd
 
-	    Array.Resize(ref todoAll, sizeofTodoAll + 1); // Increase the size of Array when add new todo object
-	    todoAll[sizeofTodoAll] = addTodo; // Adding todo object to Array.
+	    Todo addTodo = new Todo(TodoSequencer.nextTodoId(), description, nominatedAssignee); // önskad Todo
+
+	    // Array.Resize(ref todoAll, sizeofTodoAll + 1); // Increase the size of Array when add new todo object
+	    // todoAll[sizeofTodoAll] = addTodo; // Adding todo object to Array.
+
+	    //
+	    // omskrivning med Array.Copy
+	    //
+	    Todo[] newTodoAll = new Todo[currentLength+1];     // ny version med plats för för en till todo
+	    Array.Copy( todoAll, newTodoAll, currentLength);   // kopiera alla Todo från den gamla todoAll till den nya framtida
+	    newTodoAll[newTodoAll.GetUpperBound(0)] = addTodo; // klistra in i sista position i den nya todoAll
+	    todoAll = newTodoAll;                              // släpper den gamla som sedan går till GC
 
 	    return addTodo;
 	}
