@@ -11,7 +11,7 @@ namespace TodoIt.Model
 
 	private string description;
 	private bool done;
-	private static Person assignee;
+	private Person assignee;
 
 	public Person Assignee
 	{
