@@ -7,8 +7,8 @@ namespace TodoIt.Model
 {
     public class Person
     {
-	static int idCounter = 0;
-	public static int Counter { get { return idCounter; } }
+	private static int personCounter = 0;
+	public static int Counter { get { return personCounter; } }
 
 	private readonly int personId;
 	public int PersonId { get { return personId; } }
@@ -44,7 +44,7 @@ namespace TodoIt.Model
 
 	public Person(string firstName, string lastName)
 	{
-	    personId = ++idCounter;
+	    personCounter++;
 	    FirstName = firstName;  // property kontrollerar att namn inte är NULL
 	    LastName = lastName;    // property kontrollerar att namn inte är NULL
 	}
