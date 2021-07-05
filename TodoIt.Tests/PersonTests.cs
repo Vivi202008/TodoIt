@@ -59,7 +59,6 @@ namespace TodoIt.Tests
 	    //Arrange
 	    string firstName = "Kent";
 	    string lastName = "Svensson";
-
 	    Person testPerson = new Person(firstName, lastName);
 
 	    //Act
@@ -81,7 +80,6 @@ namespace TodoIt.Tests
 	    //Arrange
 	    string firstName = "Kent";
 	    string lastName = "Svensson";
-
 	    Person testPerson = new Person(firstName, lastName);
 
 	    //Act
