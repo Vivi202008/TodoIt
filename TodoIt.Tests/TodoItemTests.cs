@@ -229,9 +229,30 @@ namespace TodoIt.Tests
 	    actualTodo4.Done = false;
 	    actualTodo5.Done = true;
 
+	    // gemensam för test
+	    Todo[] testTodoAll = actualTodoItems.FindAll();
+
 	    // Assert
 	}
 
+	[Fact]
+	public void Operations()
+	{
+	    //Arrange
+	    TodoSequencer.reset();
+	    PersonSequencer.reset();
+	    string expectedFirstName1 = "Jonas";
+	    string expectedLastName1 = "Jonasson";
+	    string expectedFirstName2 = "Henrik";
+	    string expectedLastName2 = "Eriksson";
+
+	    //Act
+	    People people = new People();
+	    Person assignee1 = people.AddPerson(expectedFirstName1, expectedLastName1);
+	    Person assignee2 = people.AddPerson(expectedFirstName2, expectedLastName2);
+
+	    TodoItems actualTodoItems = new TodoItems();
+	    actualTodoItems.Clear();
 	    Todo actualTodo  = actualTodoItems.AddTodo("Work 1", assignee2);
 	    Todo actualTodo1 = actualTodoItems.AddTodo("Work 2", null);
 	    Todo actualTodo2 = actualTodoItems.AddTodo("Work 3", assignee1);
@@ -242,17 +263,21 @@ namespace TodoIt.Tests
 	    actualTodo2.Done = true;
 	    actualTodo3.Done = false;
 	    actualTodo4.Done = true;
+
+	    // gemensam för test
 	    Todo[] testTodoAll = actualTodoItems.FindAll();
 
+	    // test 1 -> TestFindByDone ?
 	    //Act            FindByDoneStatus
 	    Todo[] testTodoDone = actualTodoItems.FindByDoneStatus(true);
 	    //Assert
 	    Assert.Equal(3, testTodoDone.Length);
-	    Assert.True(testTodoDone[0].Done);
-	    Assert.True(testTodoDone[1].Done);
-	    Assert.True(testTodoDone[2].Done);
+	    Assert.Contains(actualTodo, testTodoDone);
+	    Assert.Contains(actualTodo2, testTodoDone);
+	    Assert.Contains(actualTodo4, testTodoDone);
 
 
+	    // test 2 -> TestFindByAssigneId ?
 	    //Act       FindByAssignee(personId)
 	    Todo[] testTodoPersonId = actualTodoItems.FindByAssignee(2);
 	    //Assert
@@ -261,6 +286,7 @@ namespace TodoIt.Tests
 	    Assert.True(testTodoPersonId[1].Assignee.PersonId == 2);
 	    Assert.True(testTodoPersonId[2].Assignee.PersonId == 2);
 
+	    // test 3 -> TestFindByAssignee
 	    //Act       FindByAssignee
 	    Todo[] testTodoAssignee = actualTodoItems.FindByAssignee(assignee2);
 	    //Assert
@@ -269,6 +295,7 @@ namespace TodoIt.Tests
 	    Assert.True(testTodoPersonId[1].Assignee == assignee2);
 	    Assert.True(testTodoPersonId[2].Assignee == assignee2);
 
+	    // test 4 -> TestFindUnAssigned
 	    //Act       FindUnassignedTodoItems
 	    Todo[] testTodoUnAssignee = actualTodoItems.FindUnassignedTodoItems();
 	    //Assert
