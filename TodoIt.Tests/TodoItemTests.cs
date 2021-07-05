@@ -215,6 +215,7 @@ namespace TodoIt.Tests
 
 	    //Act
 	    People people = new People();
+	    people.Clear();
 	    Person assignee1 = people.AddPerson(expectedFirstName1, expectedLastName1);
 	    Person assignee2 = people.AddPerson(expectedFirstName2, expectedLastName2);
 
@@ -303,6 +304,150 @@ namespace TodoIt.Tests
 	    //Assert
 	    Assert.True(1 == testTodoUnAssignee.Length);
 	    Assert.True(testTodoPersonId[0].Assignee == null);
+	}
+
+	[Fact]
+	public void OperationsTestFindByDone()
+	{
+	    //Arrange
+	    TodoSequencer.reset();
+	    PersonSequencer.reset();
+	    string expectedFirstName1 = "Jonas";
+	    string expectedLastName1 = "Jonasson";
+	    string expectedFirstName2 = "Henrik";
+	    string expectedLastName2 = "Eriksson";
+
+	    //Act
+	    People people = new People();
+	    people.Clear();
+	    Person assignee1 = people.AddPerson(expectedFirstName1, expectedLastName1);
+	    Person assignee2 = people.AddPerson(expectedFirstName2, expectedLastName2);
+
+	    TodoItems actualTodoItems = new TodoItems();
+	    actualTodoItems.Clear();
+	    Todo actualTodo1 = actualTodoItems.AddTodo("Work 1", assignee2);
+	    Todo actualTodo2 = actualTodoItems.AddTodo("Work 2", null);
+	    Todo actualTodo3 = actualTodoItems.AddTodo("Work 3", assignee1);
+	    Todo actualTodo4 = actualTodoItems.AddTodo("Work 4", assignee2);
+	    Todo actualTodo5 = actualTodoItems.AddTodo("Work 5", assignee2);
+	    actualTodo1.Done = true;
+	    actualTodo2.Done = false;
+	    actualTodo3.Done = true;
+	    actualTodo4.Done = false;
+	    actualTodo5.Done = true;
+
+	    // gemensam för test
+	    Todo[] testTodoAll = actualTodoItems.FindAll();
+
+	    // Assert
+	}
+
+	[Fact]
+	public void OperationsTestFindByAssigneId()
+	{
+	    //Arrange
+	    TodoSequencer.reset();
+	    PersonSequencer.reset();
+	    string expectedFirstName1 = "Jonas";
+	    string expectedLastName1 = "Jonasson";
+	    string expectedFirstName2 = "Henrik";
+	    string expectedLastName2 = "Eriksson";
+
+	    //Act
+	    People people = new People();
+	    people.Clear();
+	    Person assignee1 = people.AddPerson(expectedFirstName1, expectedLastName1);
+	    Person assignee2 = people.AddPerson(expectedFirstName2, expectedLastName2);
+
+	    TodoItems actualTodoItems = new TodoItems();
+	    actualTodoItems.Clear();
+	    Todo actualTodo1 = actualTodoItems.AddTodo("Work 1", assignee2);
+	    Todo actualTodo2 = actualTodoItems.AddTodo("Work 2", null);
+	    Todo actualTodo3 = actualTodoItems.AddTodo("Work 3", assignee1);
+	    Todo actualTodo4 = actualTodoItems.AddTodo("Work 4", assignee2);
+	    Todo actualTodo5 = actualTodoItems.AddTodo("Work 5", assignee2);
+	    actualTodo1.Done = true;
+	    actualTodo2.Done = false;
+	    actualTodo3.Done = true;
+	    actualTodo4.Done = false;
+	    actualTodo5.Done = true;
+
+	    // gemensam för test
+	    Todo[] testTodoAll = actualTodoItems.FindAll();
+
+	    // Assert
+	}
+
+	[Fact]
+	public void OperationsTestFindByAssignee
+	{
+	    //Arrange
+	    TodoSequencer.reset();
+	    PersonSequencer.reset();
+	    string expectedFirstName1 = "Jonas";
+	    string expectedLastName1 = "Jonasson";
+	    string expectedFirstName2 = "Henrik";
+	    string expectedLastName2 = "Eriksson";
+
+	    //Act
+	    People people = new People();
+	    people.Clear();
+	    Person assignee1 = people.AddPerson(expectedFirstName1, expectedLastName1);
+	    Person assignee2 = people.AddPerson(expectedFirstName2, expectedLastName2);
+
+	    TodoItems actualTodoItems = new TodoItems();
+	    actualTodoItems.Clear();
+	    Todo actualTodo1 = actualTodoItems.AddTodo("Work 1", assignee2);
+	    Todo actualTodo2 = actualTodoItems.AddTodo("Work 2", null);
+	    Todo actualTodo3 = actualTodoItems.AddTodo("Work 3", assignee1);
+	    Todo actualTodo4 = actualTodoItems.AddTodo("Work 4", assignee2);
+	    Todo actualTodo5 = actualTodoItems.AddTodo("Work 5", assignee2);
+	    actualTodo1.Done = true;
+	    actualTodo2.Done = false;
+	    actualTodo3.Done = true;
+	    actualTodo4.Done = false;
+	    actualTodo5.Done = true;
+
+	    // gemensam för test
+	    Todo[] testTodoAll = actualTodoItems.FindAll();
+
+	    // Assert
+	}
+
+	[Fact]
+	public void OperationsTestFindUnAssigned
+	{
+	    //Arrange
+	    TodoSequencer.reset();
+	    PersonSequencer.reset();
+	    string expectedFirstName1 = "Jonas";
+	    string expectedLastName1 = "Jonasson";
+	    string expectedFirstName2 = "Henrik";
+	    string expectedLastName2 = "Eriksson";
+
+	    //Act
+	    People people = new People();
+	    people.Clear();
+	    Person assignee1 = people.AddPerson(expectedFirstName1, expectedLastName1);
+	    Person assignee2 = people.AddPerson(expectedFirstName2, expectedLastName2);
+
+	    TodoItems actualTodoItems = new TodoItems();
+	    actualTodoItems.Clear();
+	    Todo actualTodo1 = actualTodoItems.AddTodo("Work 1", assignee2);
+	    Todo actualTodo2 = actualTodoItems.AddTodo("Work 2", null);
+	    Todo actualTodo3 = actualTodoItems.AddTodo("Work 3", assignee1);
+	    Todo actualTodo4 = actualTodoItems.AddTodo("Work 4", assignee2);
+	    Todo actualTodo5 = actualTodoItems.AddTodo("Work 5", assignee2);
+	    actualTodo1.Done = true;
+	    actualTodo2.Done = false;
+	    actualTodo3.Done = true;
+	    actualTodo4.Done = false;
+	    actualTodo5.Done = true;
+
+	    // gemensam för test
+	    Todo[] testTodoAll = actualTodoItems.FindAll();
+
+	    // Assert
 	}
     }
 }
