@@ -202,6 +202,9 @@ namespace TodoIt.Tests
 	    Assert.Contains(actualTodo4, testTodoAll1);
 	}
 
+	//
+	// mall för operationstester
+	//
 	[Fact]
 	public void OperationsMall()
 	{
@@ -237,73 +240,6 @@ namespace TodoIt.Tests
 
 	    // Assert
 	}
-
-	// [Fact]
-	// public void Operations()
-	// {
-	//     //Arrange
-	//     TodoSequencer.reset();
-	//     PersonSequencer.reset();
-	//     string expectedFirstName1 = "Jonas";
-	//     string expectedLastName1 = "Jonasson";
-	//     string expectedFirstName2 = "Henrik";
-	//     string expectedLastName2 = "Eriksson";
-
-	//     //Act
-	//     People people = new People();
-	//     Person assignee1 = people.AddPerson(expectedFirstName1, expectedLastName1);
-	//     Person assignee2 = people.AddPerson(expectedFirstName2, expectedLastName2);
-
-	//     TodoItems actualTodoItems = new TodoItems();
-	//     actualTodoItems.Clear();
-	//     Todo actualTodo  = actualTodoItems.AddTodo("Work 1", assignee2);
-	//     Todo actualTodo1 = actualTodoItems.AddTodo("Work 2", null);
-	//     Todo actualTodo2 = actualTodoItems.AddTodo("Work 3", assignee1);
-	//     Todo actualTodo3 = actualTodoItems.AddTodo("Work 4", assignee2);
-	//     Todo actualTodo4 = actualTodoItems.AddTodo("Work 5", assignee2);
-	//     actualTodo.Done = true;
-	//     actualTodo1.Done = false;
-	//     actualTodo2.Done = true;
-	//     actualTodo3.Done = false;
-	//     actualTodo4.Done = true;
-
-	//     // gemensam för test
-	//     Todo[] testTodoAll = actualTodoItems.FindAll();
-
-	//     // test 1 -> TestFindByDone ?                                       Ok
-	//     //Act            FindByDoneStatus
-	//     Todo[] testTodoDone = actualTodoItems.FindByDoneStatus(true);
-	//     //Assert
-	//     Assert.Equal(3, testTodoDone.Length);
-	//     Assert.Contains(actualTodo, testTodoDone);
-	//     Assert.Contains(actualTodo2, testTodoDone);
-	//     Assert.Contains(actualTodo4, testTodoDone);
-
-	//     // test 2 -> TestFindByAssigneId ?
-	//     //Act       FindByAssignee(personId)
-	//     Todo[] testTodoPersonId = actualTodoItems.FindByAssignee(2);
-	//     //Assert
-	//     Assert.Equal(3, testTodoPersonId.Length);
-	//     Assert.True(testTodoPersonId[0].Assignee.PersonId == 2);
-	//     Assert.True(testTodoPersonId[1].Assignee.PersonId == 2);
-	//     Assert.True(testTodoPersonId[2].Assignee.PersonId == 2);
-
-	//     // test 3 -> TestFindByAssignee
-	//     //Act       FindByAssignee
-	//     Todo[] testTodoAssignee = actualTodoItems.FindByAssignee(assignee2);
-	//     //Assert
-	//     Assert.Equal(3, testTodoAssignee.Length);
-	//     Assert.True(testTodoPersonId[0].Assignee == assignee2);
-	//     Assert.True(testTodoPersonId[1].Assignee == assignee2);
-	//     Assert.True(testTodoPersonId[2].Assignee == assignee2);
-
-	//     // test 4 -> TestFindUnAssigned
-	//     //Act       FindUnassignedTodoItems
-	//     Todo[] testTodoUnAssignee = actualTodoItems.FindUnassignedTodoItems();
-	//     //Assert
-	//     Assert.True(1 == testTodoUnAssignee.Length);
-	//     Assert.True(testTodoPersonId[0].Assignee == null);
-	// }
 
 	[Fact]
 	public void OperationsTestFindByDone()
