@@ -8,26 +8,6 @@ namespace TodoIt.Tests
 {
     public class TodoIdemTests
     {
-
-        [Fact]
-        public void DetailsContainsCorrectInfo()
-        {
-            //Arrange
-            string firstName = "Kent";
-            string lastName = "Svensson";
-            string description = "The work is a game---Hangman";
-            Person assignee = new Person(firstName, lastName);
-
-
-            //Act
-            Todo todo1 = new Todo(description, assignee);
-            var result = todo1.Details();
-
-            //Assert
-            Assert.Contains(description, result);
-            Assert.NotNull(description);
-        }
-
         [Fact]
         public void AddTodoItems()
         {
@@ -260,5 +240,22 @@ namespace TodoIt.Tests
 	    Assert.NotEqual(todo1.TodoId, todo2.TodoId);
 	}
 
+	[Fact]
+	public void DetailsContainsCorrectInfo()
+	{
+	    //Arrange
+	    string firstName = "Kent";
+	    string lastName = "Svensson";
+	    string description = "The work is a game---Hangman";
+	    Person assignee = new Person(firstName, lastName);
+
+	    //Act
+	    Todo todo1 = new Todo(description, assignee);
+	    string result = todo1.Details();
+
+	    //Assert
+	    Assert.NotNull(description);
+	    Assert.Contains(description, result);
+	}
     }
 }
