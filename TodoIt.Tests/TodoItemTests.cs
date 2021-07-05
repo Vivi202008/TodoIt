@@ -163,6 +163,7 @@ namespace TodoIt.Tests
 	    // Act
 	    TodoSequencer.reset();
 	    TodoItems actualTodoItems = new TodoItems();
+	    actualTodoItems.Clear();
 	    Todo actualTodo = actualTodoItems.AddTodo(description, assignee);
 	    Todo actualTodo1 = actualTodoItems.AddTodo(description1, assignee1);
 	    Todo actualTodo2 = actualTodoItems.AddTodo(description2, assignee2);
