@@ -14,7 +14,7 @@ namespace TodoIt.Model
 	public int PersonId { get { return personId; } }
 
 	string firstName;
-	string lastName;//default value stats with is null.
+	string lastName;//default value is null.
 	public string FirstName
 	{
 	    get { return firstName; }
@@ -27,6 +27,7 @@ namespace TodoIt.Model
 		firstName = value;
 	    }
 	}
+
 	public string LastName
 	{
 	    get { return lastName; }
@@ -40,7 +41,11 @@ namespace TodoIt.Model
 		lastName = value;
 	    }
 	}
-	public string FullName { get { return $"{firstName} {lastName}"; } }
+
+	public string FullName
+	{
+	    get { return $"{firstName} {lastName}"; }
+	}
 
 	public Person(string firstName, string lastName)
 	{

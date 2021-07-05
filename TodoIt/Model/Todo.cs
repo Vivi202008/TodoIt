@@ -6,6 +6,7 @@ namespace TodoIt.Model
     {
 	private static int todoCounter = 0;
 	public static int Counter { get { return todoCounter; } }
+
 	private readonly int todoId;
 	public int TodoId { get { return todoId; } }
 
@@ -21,6 +22,7 @@ namespace TodoIt.Model
 		assignee = value;
 	    }
 	}
+
 	public string Description
 	{
 	    get { return description; }
