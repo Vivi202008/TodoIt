@@ -12,7 +12,6 @@ namespace TodoIt.Tests
 	// annars kan man kanske få två instanser av Todo
 	// med samma Id
 	//
->>>>>>> origin/stefan_modifierad_model
 	[Fact]
 	public void IdCounterTest()
 	{
