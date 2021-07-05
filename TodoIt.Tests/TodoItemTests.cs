@@ -475,7 +475,7 @@ namespace TodoIt.Tests
 
 	    // Assert
 	    Assert.True(1 == testTodoUnAssignee.Length);
-	    Assert.True(testTodoPersonId[0].Assignee == null);
+	    Assert.True(testTodoUnAssignee[0].Assignee == null);
 	}
     }
 }
