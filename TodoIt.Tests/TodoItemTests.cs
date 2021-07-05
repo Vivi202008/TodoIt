@@ -8,26 +8,6 @@ namespace TodoIt.Tests
 {
     public class TodoIdemTests
     {
-        [Fact]
-        public void todoIdTest()
-        {
-            //Arrange
-            string firstName1 = "Kent";
-            string lastName1 = "Svensson";
-            string firstName2 = "Billy";
-            string lastName2 = "Eriksson";
-            Person assignee1 = new Person(firstName1, lastName1);
-            Person assignee2 = new Person(firstName2, lastName2);
-            string description1 = "The work is a calculator";
-            string description2 = "The work a game---Hangman";
-
-            //Act
-            Todo todo1 = new Todo(description1, assignee1);
-            Todo todo2 = new Todo(description2, assignee2);
-
-            //Assert
-            Assert.NotEqual(todo1.TodoId, todo2.TodoId);
-        }
 
         [Fact]
         public void DetailsContainsCorrectInfo()
@@ -241,9 +221,43 @@ namespace TodoIt.Tests
 	    int result = Todo.Counter;
 
 	    //Assert
+	    // kan fällas om något annat flyttar fram personSequencer after att reset  är gjord
+	    // här i metoden
 	    Assert.True(assignee.PersonId == 1);
 	    Assert.True(doneTodo.TodoId == 1);
+
 	    Assert.True(before < result);
+	}
+
+	[Fact]
+	public void todoIdTest()
+	{
+	    //Arrange
+	    PersonSequencer.reset();
+	    TodoSequencer.reset();
+	    string firstName1 = "Kent";
+	    string lastName1 = "Svensson";
+	    string firstName2 = "Billy";
+	    string lastName2 = "Eriksson";
+	    Person assignee1 = new Person(firstName1, lastName1);
+	    Person assignee2 = new Person(firstName2, lastName2);
+	    string description1 = "The work is a calculator";
+	    string description2 = "The work a game---Hangman";
+
+	    //Act
+	    Todo todo1 = new Todo(description1, assignee1);
+	    Todo todo2 = new Todo(description2, assignee2);
+
+	    //Assert
+	    // kan fällas om något annat flyttar fram personSequencer after att reset  är gjord
+	    // här i metoden
+	    Assert.True(assignee1.PersonId == 1);
+	    Assert.True(assignee2.PersonId == 2);
+	    Assert.True(doneTodo1.TodoId == 1);
+	    Assert.True(doneTodo2.TodoId == 2);
+	    Assert.True(Todo.Counter == 2);
+
+	    Assert.NotEqual(todo1.TodoId, todo2.TodoId);
 	}
 
     }
