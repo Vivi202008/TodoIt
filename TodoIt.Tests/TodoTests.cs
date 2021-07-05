@@ -74,6 +74,8 @@ namespace TodoIt.Tests
 
 	    //Assert
 	    Assert.NotEqual(todo1.TodoId, todo2.TodoId);
+	    Assert.Equal(3,  todo1.TodoId);
+	    Assert.Equal(10, todo2.TodoId);
 	    Assert.True(todo1.TodoId < todo2.TodoId);
 	}
 
