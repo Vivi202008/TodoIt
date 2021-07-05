@@ -167,5 +167,9 @@ namespace TodoIt.Data
 
 	    return todoToBeRemovedFound;
 	}
+
+	public void Clear() {
+	    todoAll = new Todo[0];
+	}
     }
 }
