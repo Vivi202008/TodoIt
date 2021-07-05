@@ -8,9 +8,7 @@ namespace TodoIt.Tests
     {
 	//
 	// kontrollera att efter instantiering av en Person
-	// att den statiska idCounter i klassen är förändrad
-	// annars kan man kanske få två instanser av Person
-	// med samma Id
+	// att den statiska personCounter i klassen är förändrad
 	//
 	[Fact]
 	public void IdCounterTest()
@@ -29,8 +27,7 @@ namespace TodoIt.Tests
 
 	//
 	// kontrollera att personId i instanser av Person är unik
-	// dvs att för två instanser av Person, att de har olika personId
-	// och att personId för person1 är lägre person2:s
+	// dvs att för två instanser av Person, att verkligen är två olika
 	//
 	[Fact]
 	public void PersonIdWorks()
@@ -46,8 +43,7 @@ namespace TodoIt.Tests
 	    Person person2 = new Person(firstName2, lastName2, 4);
 
 	    //Assert
-	    Assert.NotEqual(person1.PersonId, person2.PersonId);
-	    Assert.True(person1.PersonId < person2.PersonId);
+	    Assert.NotEqual(person1, person2);
 	}
 
 	//
