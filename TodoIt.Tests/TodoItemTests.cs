@@ -244,6 +244,8 @@ namespace TodoIt.Tests
 	public void DetailsContainsCorrectInfo()
 	{
 	    //Arrange
+	    PersonSequencer.reset();
+	    TodoSequencer.reset();
 	    string firstName = "Kent";
 	    string lastName = "Svensson";
 	    string description = "The work is a game---Hangman";
@@ -253,7 +255,12 @@ namespace TodoIt.Tests
 	    Todo todo1 = new Todo(description, assignee);
 	    string result = todo1.Details();
 
-	    //Assert
+	    // Assert
+	    // kan fällas om något annat flyttar fram personSequencer after att reset  är gjord
+	    // här i metoden
+	    Assert.True(assignee.PersonId == 1);
+	    Assert.True(todo1.TodoId == 1);
+
 	    Assert.NotNull(description);
 	    Assert.Contains(description, result);
 	}
