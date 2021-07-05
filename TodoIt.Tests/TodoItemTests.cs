@@ -9,25 +9,6 @@ namespace TodoIt.Tests
     public class TodoIdemTests
     {
         [Fact]
-        public void IdCounterTest()
-        {
-            //Arrange
-            string firstName = "Billy";
-            string lastName = "Svensson";
-            string description = "The work is a game---Hangman";
-            Person assignee = new Person(firstName, lastName);
-
-            //Act
-            int before = Todo.Counter;
-            new Todo(description, assignee);//create person to make counter count up.
-            int result = Todo.Counter;
-
-            //Assert
-            Assert.True(before < result);
-
-        }
-
-        [Fact]
         public void todoIdTest()
         {
             //Arrange
@@ -243,5 +224,27 @@ namespace TodoIt.Tests
 
 
         }
+	[Fact]
+	public void IdCounterTest()
+	{
+	    //Arrange
+	    PersonSequencer.reset();
+	    TodoSequencer.reset();
+	    string firstName = "Billy";
+	    string lastName = "Svensson";
+	    string description = "The work is a game---Hangman";
+	    Person assignee = new Person(firstName, lastName);
+
+	    //Act
+	    int before = Todo.Counter;
+	    doneTodo = new Todo(description, assignee);//create person to make counter count up.
+	    int result = Todo.Counter;
+
+	    //Assert
+	    Assert.True(assignee.PersonId == 1);
+	    Assert.True(doneTodo.TodoId == 1);
+	    Assert.True(before < result);
+	}
+
     }
 }
