@@ -3,7 +3,6 @@ using Xunit;
 using TodoIt.Model;
 using TodoIt.Data;
 
-
 namespace TodoIt.Tests
 {
     //
@@ -205,19 +204,20 @@ namespace TodoIt.Tests
 	public void operations()
 	{
 	    //Arrange
-	    string expectedFirstName1 = "Jonas";
-	    string expectedLastName1 = "Jonasson";
-	    Person assignee1 = new Person(expectedFirstName1, expectedLastName1);
-
-	    string expectedFirstName2 = "Henrik";
-	    string expectedLastName2 = "Eriksson";
-	    Person assignee2 = new Person(expectedFirstName2, expectedLastName2);
-
-	    //Act
 	    TodoSequencer.reset();
 	    PersonSequencer.reset();
+	    string expectedFirstName1 = "Jonas";
+	    string expectedLastName1 = "Jonasson";
+	    string expectedFirstName2 = "Henrik";
+	    string expectedLastName2 = "Eriksson";
+
+	    //Act
+	    People people = new People();
+	    Person assignee1 = people.AddPerson(expectedFirstName1, expectedLastName1);
+	    Person assignee2 = people.AddPerson(expectedFirstName2, expectedLastName2);
+
 	    TodoItems actualTodoItems = new TodoItems();
-	    Todo actualTodo = actualTodoItems.AddTodo("Work 1", assignee2);
+	    Todo actualTodo  = actualTodoItems.AddTodo("Work 1", assignee2);
 	    Todo actualTodo1 = actualTodoItems.AddTodo("Work 2", null);
 	    Todo actualTodo2 = actualTodoItems.AddTodo("Work 3", assignee1);
 	    Todo actualTodo3 = actualTodoItems.AddTodo("Work 4", assignee2);
