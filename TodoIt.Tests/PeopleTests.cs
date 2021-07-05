@@ -88,16 +88,17 @@ namespace TodoIt.Tests
 	    Person actualPerson4 = actualPeople.AddPerson(expectedFirstName4, expectedLastName4);
 	    Person actualPerson5 = actualPeople.AddPerson(expectedFirstName5, expectedLastName5);
 
+	    //Act tag bort Jonas (2) ur listan
 	    actualPeople.PersonAfterRemove(2);
 	    Person[] testPersonArray = actualPeople.FindAll();
 
 	    // Assert
 	    Assert.Contains(actualPerson, testPersonArray);
 	    Assert.DoesNotContain(actualPerson1, testPersonArray);
-
-	    Assert.NotEqual(actualPerson.PersonId, actualPerson1.PersonId);
-	    Assert.True(actualPerson.PersonId == 1);
-	    Assert.True(actualPerson2.PersonId == 3);
+	    Assert.Contains(actualPerson2, testPersonArray);
+	    Assert.Contains(actualPerson3, testPersonArray);
+	    Assert.Contains(actualPerson4, testPersonArray);
+	    Assert.Contains(actualPerson5, testPersonArray);
 
 	    Assert.Contains("Erik", actualPeople.FindById(1).FirstName);
 	    Assert.Contains("Helen", actualPeople.FindById(3).FirstName);
@@ -105,7 +106,7 @@ namespace TodoIt.Tests
 	    Assert.Contains("Ulf", actualPeople.FindById(5).FirstName);
 	    Assert.Contains("Johan", actualPeople.FindById(6).FirstName);
 
-	    //Act
+	    //Act tag bort Eva (4) ur listan
 	    actualPeople.PersonAfterRemove(4);
 	    Person[] testPersonArray1 = actualPeople.FindAll();
 
@@ -116,6 +117,11 @@ namespace TodoIt.Tests
 	    Assert.DoesNotContain(actualPerson3, testPersonArray1);
 	    Assert.Contains(actualPerson4, testPersonArray1);
 	    Assert.Contains(actualPerson5, testPersonArray1);
+
+	    Assert.Contains("Erik", actualPeople.FindById(1).FirstName);
+	    Assert.Contains("Helen", actualPeople.FindById(3).FirstName);
+	    Assert.Contains("Ulf", actualPeople.FindById(5).FirstName);
+	    Assert.Contains("Johan", actualPeople.FindById(6).FirstName);
 	}
     }
 }
