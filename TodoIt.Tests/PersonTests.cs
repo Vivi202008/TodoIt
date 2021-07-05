@@ -13,7 +13,7 @@ namespace TodoIt.Tests
 	// med samma Id
 	//
 	[Fact]
-	public void IdCounterWorks()
+	public void IdCounterTest()
 	{
 	    //Arrange
 	    string firstName = "Kent";
@@ -22,15 +22,15 @@ namespace TodoIt.Tests
 	    //Act
 	    int before = Person.Counter;
 	    new Person(firstName, lastName);//create person to make counter count up.
-	    int result = Person.Counter;
 
 	    //Assert
-	    Assert.True(before < result);
+	    Assert.True(before < Person.Counter);
 	}
 
 	//
 	// kontrollera att personId i instanser av Person är unik
-	// dvs att ingen annan instans av Person har samma personId
+	// dvs att för två instanser av Person, att de har olika personId
+	// och att personId för person1 är lägre person2:s
 	//
 	[Fact]
 	public void PersonIdWorks()
@@ -47,6 +47,28 @@ namespace TodoIt.Tests
 
 	    //Assert
 	    Assert.NotEqual(person1.PersonId, person2.PersonId);
+	    Assert.True(person1.PersonId < person2.PersonId);
+	}
+
+	//
+	// garanterar att FullName inkluderar för och efternamn
+	//
+	[Fact]
+	public void FullNameContainsCorrectInfo()
+	{
+	    //Arrange
+	    string firstName = "Kent";
+	    string lastName = "Svensson";
+	    Person testPerson = new Person(firstName, lastName);
+
+	    //Act
+	    string result = testPerson.FullName;
+
+	    //Assert
+	    // förnamn först !
+	    Assert.NotNull( result);
+	    Assert.StartsWith(firstName, result);
+	    Assert.Contains(lastName, result);
 	}
 
 	//
@@ -58,13 +80,13 @@ namespace TodoIt.Tests
 	    //Arrange
 	    string firstName = "Kent";
 	    string lastName = "Svensson";
-
 	    Person testPerson = new Person(firstName, lastName);
 
 	    //Act
 	    string result = testPerson.Details();
 
 	    //Assert
+	    Assert.NotNull( result);
 	    Assert.Contains(firstName, result);
 	    Assert.Contains(lastName, result);
 	}

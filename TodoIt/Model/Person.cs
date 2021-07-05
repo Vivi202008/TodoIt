@@ -40,16 +40,21 @@ namespace TodoIt.Model
 		lastName = value;
 	    }
 	}
-	public string FullName { get { return $"{firstName} ${lastName}"; } }
+	public string FullName { get { return $"{firstName} {lastName}"; } }
 
 	public Person(string firstName, string lastName)
 	{
 	    personId = ++idCounter;
-	    FirstName = firstName;
-	    LastName = lastName;
+	    FirstName = firstName;  // property kontrollerar att namn inte är NULL
+	    LastName = lastName;    // property kontrollerar att namn inte är NULL
 	}
 
-	 public string Details()
+	public Person(string firstName, string lastName, int id):this(firstName, lastName)
+	{
+	    personId = id;
+	}
+
+	public string Details()
 	{
 	    return $"personId: {personId}\nName: {FullName}";
 	}

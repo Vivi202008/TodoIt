@@ -4,6 +4,19 @@ using TodoIt.Data;
 
 namespace TodoIt.Tests
 {
+    //
+    // med den här märkningen hindras det här testet från att köras samtidigt
+    // med exv de i PeopleTests-klassen
+    //
+    // xUnit parallelliserar normalt sett körningen av test som är i placerade i olika klasser
+    // så exv TodoSequencer kan köras parallellt med denna men även PeopleTests
+    //
+    // PeopleTests är beroende av att PersonSequencer.nextPersonId
+    // alltid ger samma talföljd varje exekvering men om denna körs sam
+    //
+    // https://xunit.net/docs/running-tests-in-parallel
+    //
+    [Collection("our_test_runners")]
     public class PersonSequencerTests
     {
 	//
@@ -19,7 +32,7 @@ namespace TodoIt.Tests
 	    int firstId = PersonSequencer.nextPersonId();
 
 	    //Assert
-	    Assert.True( firstId == 1);
+	    Assert.True(firstId == 1);
 	}
 
 	//
@@ -32,7 +45,7 @@ namespace TodoIt.Tests
 	    PersonSequencer.reset();
 
 	    //Act
-	    int firstId  = PersonSequencer.nextPersonId();
+	    int firstId = PersonSequencer.nextPersonId();
 	    int secondId = PersonSequencer.nextPersonId();
 	    int thirdId = PersonSequencer.nextPersonId();
 

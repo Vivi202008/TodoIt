@@ -51,16 +51,14 @@ namespace TodoIt.Model
 	    Assignee = nominatedAssignee;
 	}
 
-	public Todo(int id, string description)
+	public Todo(int id, string description, Person nominatedAssignee):this(description, nominatedAssignee)
 	{
 	    todoId = id;
-	    Description = description;
-	    Done = false;
 	}
 
 	public string Details()
 	{
-	    return $"todoId: {todoId}\nDescription: {description}\nDone?:{done}\nAssignee:{assignee}";
+	    return $"todoId: {todoId}\nDescription: {description}\nDone:{done}\nAssignee:{assignee.PersonId + assignee.FullName}";
 	}
     }
 }

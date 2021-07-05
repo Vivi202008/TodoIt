@@ -6,6 +6,13 @@ namespace TodoIt.Tests
 {
     public class TodoTests
     {
+	//
+	// kontrollera att efter instantiering av en Todo
+	// att den statiska idCounter i klassen är förändrad
+	// annars kan man kanske få två instanser av Todo
+	// med samma Id
+	//
+>>>>>>> origin/stefan_modifierad_model
 	[Fact]
 	public void IdCounterTest()
 	{
@@ -18,15 +25,18 @@ namespace TodoIt.Tests
 	    //Act
 	    int before = Todo.Counter;
 	    new Todo(description, assignee);//create person to make counter count up.
-	    int result = Todo.Counter;
 
 	    //Assert
-	    Assert.True(before < result);
-
+	    Assert.True(before < Todo.Counter);
 	}
 
+	//
+	// kontrollera att todoId i instanser av Todo är unik
+	// dvs att för två instanser av Todo, att de har olika todoId
+	// och att todo1 har en lägre id än todo2
+	//
 	[Fact]
-	public void todoIdTest()
+	public void TodoIdWorks()
 	{
 	    //Arrange
 	    string firstName1 = "Kent";
@@ -44,8 +54,12 @@ namespace TodoIt.Tests
 
 	    //Assert
 	    Assert.NotEqual(todo1.TodoId, todo2.TodoId);
+	    Assert.True(todo1.TodoId < todo2.TodoId);
 	}
 
+	//
+	// garanterar att description innehåller det den ska innehålla
+	//
 	[Fact]
 	public void DetailsContainsCorrectInfo()
 	{
@@ -55,15 +69,13 @@ namespace TodoIt.Tests
 	    string description = "The work is a game---Hangman";
 	    Person assignee = new Person(firstName, lastName);
 
-
 	    //Act
 	    Todo todo1 = new Todo(description, assignee);
-
-	    var result = todo1.Details();
+	    string result = todo1.Details();
 
 	    //Assert
-	    Assert.Contains(description, result);
 	    Assert.NotNull(description);
+	    Assert.Contains(description, result);
 	}
     }
 }
