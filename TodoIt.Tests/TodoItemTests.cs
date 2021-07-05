@@ -93,6 +93,7 @@ namespace TodoIt.Tests
 
 	    // Act
 	    TodoItems actualTodoItems = new TodoItems();
+	    actualTodoItems.Clear();
 
 	    Person assignee = new Person(expectedFirstName, expectedLastName);
 	    Todo actualTodo = actualTodoItems.AddTodo(eriksTodo, assignee);
