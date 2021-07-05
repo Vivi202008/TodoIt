@@ -4,7 +4,7 @@ namespace TodoIt.Model
 {
     public class Todo
     {
-	static int todoCounter = 0;
+	private static int todoCounter = 0;
 	public static int Counter { get { return todoCounter; } }
 	private readonly int todoId;
 	public int TodoId { get { return todoId; } }
