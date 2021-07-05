@@ -42,8 +42,8 @@ namespace TodoIt.Tests
 	    string lastName2 = "Testsson";
 
 	    //Act
-	    Person person1 = new Person(firstName, lastName);
-	    Person person2 = new Person(firstName2, lastName2);
+	    Person person1 = new Person(firstName, lastName, 2);
+	    Person person2 = new Person(firstName2, lastName2, 4);
 
 	    //Assert
 	    Assert.NotEqual(person1.PersonId, person2.PersonId);
