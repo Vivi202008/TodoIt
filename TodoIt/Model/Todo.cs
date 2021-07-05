@@ -4,8 +4,8 @@ namespace TodoIt.Model
 {
     public class Todo
     {
-	static int idCount = 0;
-	public static int Counter { get { return idCount; } }
+	static int todoCounter = 0;
+	public static int Counter { get { return todoCounter; } }
 	private readonly int todoId;
 	public int TodoId { get { return todoId; } }
 
@@ -45,7 +45,7 @@ namespace TodoIt.Model
 
 	public Todo(string description, Person nominatedAssignee)
 	{
-	    todoId = ++idCount;
+	    todoCounter++;
 	    Description = description;
 	    Done = false;
 	    Assignee = nominatedAssignee;
