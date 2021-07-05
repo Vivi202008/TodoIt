@@ -53,29 +53,6 @@ namespace TodoIt.Tests
 	}
 
 	//
-	// Todo.cs hade ett bugg att alla Todo fick samma assignee
-	//   private Person assignee var static-markerad
-	//
-	[Fact]
-	public void TodoAssigneNotStatic2()
-	{
-	    //Arrange
-	    string firstName1 = "Kent";    string lastName1 = "Svensson";
-	    string firstName2 = "Billy";   string lastName2 = "Eriksson";
-	    Person assignee1 = new Person(firstName1, lastName1);
-	    Person assignee2 = new Person(firstName2, lastName2);
-	    string description1 = "The work is a calculator";
-	    string description2 = "The work a game---Hangman";
-
-	    //Act
-	    Todo todo1 = new Todo(description1, assignee1);
-	    Todo todo2 = new Todo(description2, assignee2);
-
-	    //Assert
-	    Assert.NotEqual(todo2.Assignee, todo1.Assignee);
-	}
-
-	//
 	// kontrollera att todoId i instanser av Todo är unik
 	// dvs att för två instanser av Todo, att de har olika todoId
 	// och att todo1 har en lägre id än todo2
