@@ -123,5 +123,31 @@ namespace TodoIt.Tests
 	    Assert.Contains("Ulf", actualPeople.FindById(5).FirstName);
 	    Assert.Contains("Johan", actualPeople.FindById(6).FirstName);
 	}
+
+	[Fact]
+	public void ClearPersons()
+	{
+	    // Arrange
+	    string expectedFirstName = "Erik";
+	    string expectedLastName = "Eriksson";
+
+	    // nolla PersonSequencer för att få förutsägelsebara personId
+	    PersonSequencer.reset();
+
+	    // Act
+	    People actualPeople = new People();
+	    Person actualPerson = actualPeople.AddPerson(expectedFirstName, expectedLastName);
+	    Person[] testPersonArray = actualPeople.FindAll();
+
+	    // Assert
+	    Assert.Equal(1, actualPeople.Size());
+	    Assert.Contains(actualPerson, testPersonArray);
+
+	    // Act
+	    actualPeople.Clear();
+
+	    // Assert
+	    Assert.Equal(0, actualPeople.Size());
+	}
     }
 }
