@@ -21,7 +21,7 @@ namespace TodoIt.Tests
 
 	    //Act
 	    int before = Todo.Counter;
-	    new Todo(description, assignee);//create person to make counter count up.
+	    Todo enTodo = new Todo(description, assignee);//create a todo to make counter count up.
 
 	    //Assert
 	    Assert.True(before < Todo.Counter);

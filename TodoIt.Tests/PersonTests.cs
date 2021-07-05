@@ -8,7 +8,7 @@ namespace TodoIt.Tests
     {
 	//
 	// kontrollera att efter instantiering av en Person
-	// att den statiska personCounter i klassen är förändrad
+	// att personCounter i klassen är förändrad
 	//
 	[Fact]
 	public void IdCounterTest()
@@ -19,7 +19,7 @@ namespace TodoIt.Tests
 
 	    //Act
 	    int before = Person.Counter;
-	    new Person(firstName, lastName);//create person to make counter count up.
+	    personen = new Person(firstName, lastName);//create person to make counter count up.
 
 	    //Assert
 	    Assert.True(before < Person.Counter);
