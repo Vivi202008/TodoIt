@@ -36,7 +36,7 @@ namespace TodoIt.Tests
 	}
 
 	//
-	// kontrollera att id från TodoSequencer ökar
+	// kontrollera att id från sekvensklassen ökar
 	//
 	[Fact]
 	public void IdCounterWorks2()
