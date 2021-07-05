@@ -7,22 +7,22 @@ namespace TodoIt.Tests
 {
     public class TodoTests
     {
-        [Fact]
-        public void IdCounterTest()
-        {
-            //Arrange
-            string firstName = "Billy";
-            string lastName = "Svensson";
-            string description = "The work is a game---Hangman";
-            Person assignee = new Person(firstName, lastName);
+	[Fact]
+	public void IdCounterTest()
+	{
+	    //Arrange
+	    string firstName = "Billy";
+	    string lastName = "Svensson";
+	    string description = "The work is a game---Hangman";
+	    Person assignee = new Person(firstName, lastName);
 
-            //Act
-            int before = Todo.Counter;
-            new Todo(description, assignee);//create person to make counter count up.
-            int result = Todo.Counter;
+	    //Act
+	    int before = Todo.Counter;
+	    new Todo(description, assignee);//create person to make counter count up.
 
-            //Assert
-            Assert.True(before < result);
+	    //Assert
+	    Assert.True(before < Todo.Counter);
+	}
 
         }
 
