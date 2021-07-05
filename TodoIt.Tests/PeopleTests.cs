@@ -39,6 +39,7 @@ namespace TodoIt.Tests
 
 	    // Act
 	    People actualPeople = new People();
+	    actualPeople.Clear();
 	    Person actualPerson = actualPeople.AddPerson(expectedFirstName, expectedLastName);
 	    Person actualPerson1 = actualPeople.AddPerson(expectedFirstName1, expectedLastName1);
 	    Person[] testPersonArray = actualPeople.FindAll();
