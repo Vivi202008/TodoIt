@@ -201,7 +201,7 @@ namespace TodoIt.Tests
 	}
 
 	[Fact]
-	public void operations()
+	public void OperationsMall()
 	{
 	    //Arrange
 	    TodoSequencer.reset();
