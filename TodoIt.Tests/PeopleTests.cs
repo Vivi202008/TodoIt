@@ -31,7 +31,6 @@ namespace TodoIt.Tests
 	    // Arrange
 	    string expectedFirstName = "Erik";
 	    string expectedLastName = "Eriksson";
-
 	    string expectedFirstName1 = "Jonas";
 	    string expectedLastName1 = "Jonasson";
 
@@ -66,19 +65,14 @@ namespace TodoIt.Tests
 	    // Arrange
 	    string expectedFirstName = "Erik";
 	    string expectedLastName = "Eriksson";
-
 	    string expectedFirstName1 = "Jonas";
 	    string expectedLastName1 = "Jonasson";
-
 	    string expectedFirstName2 = "Helen";
 	    string expectedLastName2 = "Eriksson";
-
 	    string expectedFirstName3 = "Eva";
 	    string expectedLastName3 = "Jonasson";
-
 	    string expectedFirstName4 = "Ulf";
 	    string expectedLastName4 = "Eriksson";
-
 	    string expectedFirstName5 = "Johan";
 	    string expectedLastName5 = "Jonasson";
 
@@ -86,7 +80,6 @@ namespace TodoIt.Tests
 	    PersonSequencer.reset();
 
 	    // Act
-	    // PersonSequencer.reset();
 	    People actualPeople = new People();
 	    Person actualPerson = actualPeople.AddPerson(expectedFirstName, expectedLastName);
 	    Person actualPerson1 = actualPeople.AddPerson(expectedFirstName1, expectedLastName1);
@@ -113,7 +106,6 @@ namespace TodoIt.Tests
 	    Assert.Contains("Johan", actualPeople.FindById(6).FirstName);
 
 	    //Act
-	    //PersonSequencer.reset();
 	    actualPeople.PersonAfterRemove(4);
 	    Person[] testPersonArray1 = actualPeople.FindAll();
 
