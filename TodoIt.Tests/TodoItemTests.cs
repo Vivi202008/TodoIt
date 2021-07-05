@@ -217,6 +217,21 @@ namespace TodoIt.Tests
 	    Person assignee2 = people.AddPerson(expectedFirstName2, expectedLastName2);
 
 	    TodoItems actualTodoItems = new TodoItems();
+	    actualTodoItems.Clear();
+	    Todo actualTodo1 = actualTodoItems.AddTodo("Work 1", assignee2);
+	    Todo actualTodo2 = actualTodoItems.AddTodo("Work 2", null);
+	    Todo actualTodo3 = actualTodoItems.AddTodo("Work 3", assignee1);
+	    Todo actualTodo4 = actualTodoItems.AddTodo("Work 4", assignee2);
+	    Todo actualTodo5 = actualTodoItems.AddTodo("Work 5", assignee2);
+	    actualTodo1.Done = true;
+	    actualTodo2.Done = false;
+	    actualTodo3.Done = true;
+	    actualTodo4.Done = false;
+	    actualTodo5.Done = true;
+
+	    // Assert
+	}
+
 	    Todo actualTodo  = actualTodoItems.AddTodo("Work 1", assignee2);
 	    Todo actualTodo1 = actualTodoItems.AddTodo("Work 2", null);
 	    Todo actualTodo2 = actualTodoItems.AddTodo("Work 3", assignee1);
