@@ -86,7 +86,7 @@ namespace TodoIt.Data
 
 	    for (int i = 0; i < Size(); i++)
 	    {
-		if (todoAll[i].Assignee.PersonId == personId)
+		if (todoAll[i].Assignee != null && todoAll[i].Assignee.PersonId == personId)
 		{
 		    Array.Resize(ref todoPersonId, todoPersonId.Length + 1); // Increase the size of Array when add new todo object
 		    todoPersonId[count] = todoAll[i];

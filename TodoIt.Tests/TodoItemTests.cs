@@ -279,7 +279,6 @@ namespace TodoIt.Tests
 	    Assert.Contains(actualTodo2, testTodoDone);
 	    Assert.Contains(actualTodo4, testTodoDone);
 
-
 	    // test 2 -> TestFindByAssigneId ?
 	    //Act       FindByAssignee(personId)
 	    Todo[] testTodoPersonId = actualTodoItems.FindByAssignee(2);
@@ -386,7 +385,7 @@ namespace TodoIt.Tests
 	}
 
 	[Fact]
-	public void OperationsTestFindByAssignee
+	public void OperationsTestFindByAssignee()
 	{
 	    //Arrange
 	    TodoSequencer.reset();
@@ -422,7 +421,7 @@ namespace TodoIt.Tests
 	}
 
 	[Fact]
-	public void OperationsTestFindUnAssigned
+	public void OperationsTestFindUnAssigned()
 	{
 	    //Arrange
 	    TodoSequencer.reset();
