@@ -8,12 +8,10 @@ namespace TodoIt.Tests
     {
 	//
 	// kontrollera att efter instantiering av en Todo
-	// att den statiska idCounter i klassen är förändrad
-	// annars kan man kanske få två instanser av Todo
-	// med samma Id
+	// att todoCounter i klassen är förändrad
 	//
 	[Fact]
-	public void IdCounterTest()
+	public void todoCounterTest()
 	{
 	    //Arrange
 	    string firstName = "Billy";

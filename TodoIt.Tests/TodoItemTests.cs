@@ -232,7 +232,7 @@ namespace TodoIt.Tests
 	    actualTodo4.Done = false;
 	    actualTodo5.Done = true;
 
-	    // gemensam för test
+	    // gemensam för vissa test
 	    Todo[] testTodoAll = actualTodoItems.FindAll();
 
 	    // Assert
@@ -270,7 +270,7 @@ namespace TodoIt.Tests
 	//     // gemensam för test
 	//     Todo[] testTodoAll = actualTodoItems.FindAll();
 
-	//     // test 1 -> TestFindByDone ?
+	//     // test 1 -> TestFindByDone ?                                       Ok
 	//     //Act            FindByDoneStatus
 	//     Todo[] testTodoDone = actualTodoItems.FindByDoneStatus(true);
 	//     //Assert
@@ -335,9 +335,6 @@ namespace TodoIt.Tests
 	    actualTodo4.Done = false;
 	    actualTodo5.Done = true;
 
-	    // gemensam för test
-	    Todo[] testTodoAll = actualTodoItems.FindAll();
-
 	    //Act            FindByDoneStatus
 	    Todo[] testTodoDone = actualTodoItems.FindByDoneStatus(true);
 
@@ -378,9 +375,6 @@ namespace TodoIt.Tests
 	    actualTodo4.Done = false;
 	    actualTodo5.Done = true;
 
-	    // gemensam för test
-	    Todo[] testTodoAll = actualTodoItems.FindAll();
-
 	    //Act       FindByAssignee(personId)
 	    Todo[] testTodoPersonId = actualTodoItems.FindByAssignee(2);
 
@@ -389,6 +383,11 @@ namespace TodoIt.Tests
 	    Assert.True(testTodoPersonId[0].Assignee.PersonId == 2);
 	    Assert.True(testTodoPersonId[1].Assignee.PersonId == 2);
 	    Assert.True(testTodoPersonId[2].Assignee.PersonId == 2);
+
+	    // Assert
+	    //   actualTodo3 ska inte vara med i uppräkningen för
+	    //   Henrik, det är Jonas som har ansvaret
+	    Assert.DoesNotContain(actualTodo3, testTodoPersonId);
 	}
 
 	// <summary>
