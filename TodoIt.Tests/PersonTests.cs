@@ -29,7 +29,7 @@ namespace TodoIt.Tests
 
 	//
 	// kontrollera att personId i instanser av Person är unik
-	// dvs att ingen annan instans av Person har samma personId
+	// dvs att för två instanser av Person, att de har olika personId
 	//
 	[Fact]
 	public void PersonIdWorks()

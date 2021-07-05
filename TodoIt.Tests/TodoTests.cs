@@ -7,6 +7,12 @@ namespace TodoIt.Tests
 {
     public class TodoTests
     {
+	//
+	// kontrollera att efter instantiering av en Todo
+	// att den statiska idCounter i klassen är förändrad
+	// annars kan man kanske få två instanser av Todo
+	// med samma Id
+	//
 	[Fact]
 	public void IdCounterTest()
 	{
@@ -24,28 +30,22 @@ namespace TodoIt.Tests
 	    Assert.True(before < Todo.Counter);
 	}
 
-        }
-
-        [Fact]
-        public void todoIdTest()
-        {
-            //Arrange
-            string firstName1 = "Kent";
-            string lastName1 = "Svensson";
-            string firstName2 = "Billy";
-            string lastName2 = "Eriksson";
-            Person assignee1 = new Person(firstName1, lastName1);
-            Person assignee2 = new Person(firstName2, lastName2);
-            string description1 = "The work is a calculator";
-            string description2 = "The work a game---Hangman";
-
-            //Act
-            Todo todo1 = new Todo(description1, assignee1);
-            Todo todo2 = new Todo(description2, assignee2);
-
-            //Assert
-            Assert.NotEqual(todo1.TodoId, todo2.TodoId);
-        }
+	//
+	// kontrollera att todoId i instanser av Todo är unik
+	// dvs att för två instanser av Todo, att de har olika personId
+	//
+	[Fact]
+	public void TodoIdWorks()
+	{
+	    //Arrange
+	    string firstName1 = "Kent";
+	    string lastName1 = "Svensson";
+	    string firstName2 = "Billy";
+	    string lastName2 = "Eriksson";
+	    Person assignee1 = new Person(firstName1, lastName1);
+	    Person assignee2 = new Person(firstName2, lastName2);
+	    string description1 = "The work is a calculator";
+	    string description2 = "The work a game---Hangman";
 
         [Fact]
         public void DetailsContainsCorrectInfo()
