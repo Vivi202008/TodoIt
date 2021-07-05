@@ -28,7 +28,6 @@ namespace TodoIt.Tests
 	[Fact]
 	public void AddPersons()
 	{
-
 	    // Arrange
 	    string expectedFirstName = "Erik";
 	    string expectedLastName = "Eriksson";
@@ -57,15 +56,13 @@ namespace TodoIt.Tests
 	    Assert.True(actualPerson.PersonId == 1);
 	    Assert.True(actualPerson1.PersonId == 2);
 
-	    Assert.Contains(actualPeople.FindById(1).FirstName, "Erik");
-	    Assert.Contains(actualPeople.FindById(2).FirstName, "Jonas");
-
+	    Assert.Equal("Erik",  actualPeople.FindById(1).FirstName);
+	    Assert.Equal("Jonas", actualPeople.FindById(2).FirstName);
 	}
 
 	[Fact]
 	public void RemovePersons()
 	{
-
 	    // Arrange
 	    string expectedFirstName = "Erik";
 	    string expectedLastName = "Eriksson";
@@ -109,11 +106,11 @@ namespace TodoIt.Tests
 	    Assert.True(actualPerson.PersonId == 1);
 	    Assert.True(actualPerson2.PersonId == 3);
 
-	    Assert.Contains(actualPeople.FindById(1).FirstName, "Erik");
-	    Assert.Contains(actualPeople.FindById(3).FirstName, "Helen");
-	    Assert.Contains(actualPeople.FindById(4).FirstName, "Eva");
-	    Assert.Contains(actualPeople.FindById(5).FirstName, "Ulf");
-	    Assert.Contains(actualPeople.FindById(6).FirstName, "Johan");
+	    Assert.Contains("Erik", actualPeople.FindById(1).FirstName);
+	    Assert.Contains("Helen", actualPeople.FindById(3).FirstName);
+	    Assert.Contains("Eva", actualPeople.FindById(4).FirstName);
+	    Assert.Contains("Ulf", actualPeople.FindById(5).FirstName);
+	    Assert.Contains("Johan", actualPeople.FindById(6).FirstName);
 
 	    //Act
 	    //PersonSequencer.reset();
