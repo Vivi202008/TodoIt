@@ -32,7 +32,8 @@ namespace TodoIt.Tests
 
 	//
 	// kontrollera att todoId i instanser av Todo är unik
-	// dvs att för två instanser av Todo, att de har olika personId
+	// dvs att för två instanser av Todo, att de har olika todoId
+	// och att todo1 har en lägre id än todo2
 	//
 	[Fact]
 	public void TodoIdWorks()
@@ -47,26 +48,34 @@ namespace TodoIt.Tests
 	    string description1 = "The work is a calculator";
 	    string description2 = "The work a game---Hangman";
 
-        [Fact]
-        public void DetailsContainsCorrectInfo()
-        {
-            //Arrange
-            string firstName = "Kent";
-            string lastName = "Svensson";
-            string description = "The work is a game---Hangman";
-            Person assignee = new Person(firstName, lastName);
+	    //Act
+	    Todo todo1 = new Todo(description1, assignee1);
+	    Todo todo2 = new Todo(description2, assignee2);
 
+	    //Assert
+	    Assert.NotEqual(todo1.TodoId, todo2.TodoId);
+	    Assert.True(todo1.TodoId < todo2.TodoId);
+	}
 
-            //Act
-            Todo todo1 = new Todo(description, assignee);
+	//
+	// garanterar att description innehåller det den ska innehålla
+	//
+	[Fact]
+	public void DetailsContainsCorrectInfo()
+	{
+	    //Arrange
+	    string firstName = "Kent";
+	    string lastName = "Svensson";
+	    string description = "The work is a game---Hangman";
+	    Person assignee = new Person(firstName, lastName);
 
-            var result = todo1.Details();
+	    //Act
+	    Todo todo1 = new Todo(description, assignee);
+	    string result = todo1.Details();
 
-            //Assert
-            Assert.Contains(description, result);
-            Assert.NotNull(description);
-        }
-
-
+	    //Assert
+	    Assert.NotNull(description);
+	    Assert.Contains(description, result);
+	}
     }
 }

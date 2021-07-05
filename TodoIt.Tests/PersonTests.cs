@@ -30,6 +30,7 @@ namespace TodoIt.Tests
 	//
 	// kontrollera att personId i instanser av Person är unik
 	// dvs att för två instanser av Person, att de har olika personId
+	// och att personId för person1 är lägre person2:s
 	//
 	[Fact]
 	public void PersonIdWorks()
@@ -50,6 +51,28 @@ namespace TodoIt.Tests
 	}
 
 	//
+	// garanterar att FullName inkluderar för och efternamn
+	//
+	[Fact]
+	public void FullNameContainsCorrectInfo()
+	{
+	    //Arrange
+	    string firstName = "Kent";
+	    string lastName = "Svensson";
+
+	    Person testPerson = new Person(firstName, lastName);
+
+	    //Act
+	    string result = testPerson.FullName;
+
+	    //Assert
+	    // förnamn först !
+	    Assert.NotNull( result);
+	    Assert.StartsWith(firstName, result);
+	    Assert.Contains(lastName, result);
+	}
+
+	//
 	// garanterar att Details inkluderar FullName dvs förnamn efternamn
 	//
 	[Fact]
@@ -65,6 +88,7 @@ namespace TodoIt.Tests
 	    string result = testPerson.Details();
 
 	    //Assert
+	    Assert.NotNull( result);
 	    Assert.Contains(firstName, result);
 	    Assert.Contains(lastName, result);
 	}
