@@ -339,7 +339,14 @@ namespace TodoIt.Tests
 	    // gemensam för test
 	    Todo[] testTodoAll = actualTodoItems.FindAll();
 
-	    // Assert
+	    //Act            FindByDoneStatus
+	    Todo[] testTodoDone = actualTodoItems.FindByDoneStatus(true);
+
+	    //Assert
+	    Assert.Equal(3, testTodoDone.Length);
+	    Assert.Contains(actualTodo1, testTodoDone);
+	    Assert.Contains(actualTodo3, testTodoDone);
+	    Assert.Contains(actualTodo5, testTodoDone);
 	}
 
 	[Fact]
