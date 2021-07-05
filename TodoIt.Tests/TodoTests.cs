@@ -71,8 +71,8 @@ namespace TodoIt.Tests
 	    string description2 = "The work a game---Hangman";
 
 	    //Act
-	    Todo todo1 = new Todo(description1, assignee1);
-	    Todo todo2 = new Todo(description2, assignee2);
+	    Todo todo1 = new Todo(3,  description1, assignee1);
+	    Todo todo2 = new Todo(10, description2, assignee2);
 
 	    //Assert
 	    Assert.NotEqual(todo1.TodoId, todo2.TodoId);
